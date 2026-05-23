@@ -51,7 +51,8 @@
             <div class="phase-item"><strong>Phase 1 — 划区</strong><span>语义区块，写 BLOCKS.md</span></div>
             <div class="phase-item"><strong>Phase 2 — 切图判定</strong><span>slice-manifest.ts</span></div>
             <div class="phase-item"><strong>Phase 3 — 骨架代码</strong><span>flex 布局，禁止整页 absolute</span></div>
-            <div class="phase-item"><strong>Phase 5.5 — 同宽对比</strong><span>414px Playwright 对比</span></div>
+            <div class="phase-item"><strong>Phase 4 — Token 与文案</strong><span>仅 ref-full.png 可见文案</span></div>
+            <div class="phase-item"><strong>Phase 5 — 皮肤与验收</strong><span>对照截图、build 通过</span></div>
           </div></section>
         </div>
         <div>
@@ -60,6 +61,12 @@
             <pre id="cmd-global">git clone git@github.com:zwxallen818/cursor-skills.git
 cd cursor-skills
 cp -r skills/messy-figma-responsive ~/.cursor/skills/</pre></div>
+          </section>
+          <section class="panel" style="margin-bottom:16px"><h2>环境变量</h2>
+            <p style="margin:0 0 12px;font-size:14px;color:var(--muted,#64748b)">无 Figma MCP 时用 REST API 拉截图与节点树，需 Personal Access Token（勿提交仓库）。</p>
+            <div class="code-block"><button class="copy-btn" data-copy="token">复制</button>
+            <pre id="cmd-token"># Figma → Settings → Security → Personal access tokens
+export FIGMA_TOKEN=figd_xxx</pre></div>
           </section>
           <section class="panel"><h2>硬规则</h2><ul>
             <li>仅实现 screenshot 可见内容</li>
