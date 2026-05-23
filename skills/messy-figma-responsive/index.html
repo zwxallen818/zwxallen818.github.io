@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>messy-figma-responsive — Allen Skills</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" fill="currentColor"/></svg>
+        <span class="brand-text">Allen Skills</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/zwxallen818/cursor-skills" class="btn-publish" target="_blank" rel="noopener">+ 添加 Skill</a>
+        <a href="https://github.com/zwxallen818/cursor-skills" class="header-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail-page">
+    <div class="container">
+      <a class="back-link" href="../../">← 返回全部技能</a>
+      <section class="detail-hero">
+        <div class="detail-header">
+          <div class="detail-icon" style="background:#8b5cf6">M</div>
+          <div>
+            <h1 class="detail-title">乱稿 Figma → 响应式实现</h1>
+            <p class="detail-id">messy-figma-responsive</p>
+            <p class="detail-desc">从混乱 Figma 稿实现响应式 UI。截图优先、可见即所得、flex 布局与 margin 内容沟。</p>
+            <div class="detail-meta-row">
+              <span>版本 1.0.0</span><span>更新 2026-05-23</span><span>来自 Cursor</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="detail-grid">
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>何时启用</h2><ul>
+            <li>用户提供含 node-id 的 Figma 帧链接</li>
+            <li>设计稿乱、绝对定位、切图无规则</li>
+            <li>不要把 get_design_context 整页输出当最终代码</li>
+          </ul></section>
+          <section class="panel"><h2>执行流程</h2><div class="phase-list">
+            <div class="phase-item"><strong>Phase 0 — 侦察</strong><span>截图 → ref-full.png，写 AUDIT.md</span></div>
+            <div class="phase-item"><strong>Phase 1 — 划区</strong><span>语义区块，写 BLOCKS.md</span></div>
+            <div class="phase-item"><strong>Phase 2 — 切图判定</strong><span>slice-manifest.ts</span></div>
+            <div class="phase-item"><strong>Phase 3 — 骨架代码</strong><span>flex 布局，禁止整页 absolute</span></div>
+            <div class="phase-item"><strong>Phase 5.5 — 同宽对比</strong><span>414px Playwright 对比</span></div>
+          </div></section>
+        </div>
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>安装（全局）</h2>
+            <div class="code-block"><button class="copy-btn" data-copy="global">复制</button>
+            <pre id="cmd-global">git clone git@github.com:zwxallen818/cursor-skills.git
+cd cursor-skills
+cp -r skills/messy-figma-responsive ~/.cursor/skills/</pre></div>
+          </section>
+          <section class="panel"><h2>硬规则</h2><ul>
+            <li>仅实现 screenshot 可见内容</li>
+            <li>不实现 Status Bar、Home Indicator</li>
+            <li>禁止 max-w-[390px] 锁死画布</li>
+          </ul></section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><p>© Allen Skills</p></div></footer>
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
+      const text = document.getElementById('cmd-' + btn.dataset.copy).textContent;
+      try { await navigator.clipboard.writeText(text); btn.textContent = '已复制'; setTimeout(() => btn.textContent = '复制', 1500); } catch { btn.textContent = '失败'; }
+    }));
+  </script>
+</body></html>

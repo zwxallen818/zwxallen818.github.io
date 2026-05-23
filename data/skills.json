@@ -1,0 +1,42 @@
+{
+  "site": {
+    "title": "Allen Skills",
+    "subtitle": "快速发现专家技能，让 AI 从通用走向专用",
+    "author": "zwxallen818"
+  },
+  "categories": [
+    { "id": "all", "label": "全部" },
+    { "id": "ai-dev", "label": "AI 开发" },
+    { "id": "figma", "label": "Figma" },
+    { "id": "workflow", "label": "效率提升" },
+    { "id": "frontend", "label": "前端" }
+  ],
+  "skills": [
+    {
+      "id": "messy-figma-responsive",
+      "name": "messy-figma-responsive",
+      "title": "乱稿 Figma → 响应式实现",
+      "description": "从混乱 Figma 稿（绝对定位、命名不规范）实现响应式 UI。截图优先、可见即所得、flex 布局与 margin 内容沟。",
+      "categories": ["figma", "frontend", "ai-dev", "workflow"],
+      "tags": ["Figma", "Design-to-Code", "React", "Tailwind", "Cursor"],
+      "version": "1.0.0",
+      "updated": "2026-05-23",
+      "source": "Cursor",
+      "iconColor": "#8b5cf6",
+      "iconLetter": "M",
+      "needsApiKey": true,
+      "stats": { "stars": 12, "downloads": 86 },
+      "path": "skills/messy-figma-responsive",
+      "detailUrl": "skills/messy-figma-responsive/",
+      "triggers": [
+        "Figma URL with node-id",
+        "乱稿 / 绝对定位设计稿",
+        "Figma MCP codegen 失败"
+      ],
+      "install": {
+        "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/messy-figma-responsive ~/.cursor/skills/",
+        "project": "cp -r skills/messy-figma-responsive .cursor/skills/"
+      }
+    }
+  ]
+}

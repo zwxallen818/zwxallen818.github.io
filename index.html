@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allen Skills — Cursor Agent 技能库</title>
+  <meta name="description" content="快速发现专家技能，让 AI 从通用走向专用" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">Allen Skills</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/zwxallen818/cursor-skills" class="btn-publish" target="_blank" rel="noopener">+ 添加 Skill</a>
+        <a href="https://github.com/zwxallen818/cursor-skills" class="header-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="page-head">
+        <h1 class="page-title">全部技能</h1>
+        <p class="page-subtitle" id="hero-subtitle">快速发现专家技能，让 AI 从通用走向专用</p>
+        <p class="page-count" id="hero-count"></p>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M20 20l-3.5-3.5"></path>
+          </svg>
+          <input id="search-input" type="search" placeholder="搜索技能…" autocomplete="off" />
+        </div>
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="技能分类"></div>
+      </section>
+
+      <section class="skills-section">
+        <div id="skills-list" class="skills-list" role="list"></div>
+        <div id="empty-state" class="empty-state hidden">
+          <p>没有找到匹配的技能</p>
+          <button type="button" class="btn-text" id="clear-filters">清除筛选</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Allen Skills · Inspired by SkillHub</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
