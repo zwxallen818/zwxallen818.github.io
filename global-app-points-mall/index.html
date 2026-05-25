@@ -245,30 +245,39 @@
       .filter-pill {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
+        justify-content: center;
+        gap: 2px;
+        box-sizing: border-box;
         height: 32px;
-        padding: 0 12px;
         border-radius: 16px;
         border: 0;
         font-family: inherit;
         font-size: 14px;
+        line-height: 20px;
         font-weight: var(--fw-medium);
         cursor: pointer;
+        flex-shrink: 0;
       }
 
       .filter-pill--primary {
         background: var(--evs-blue);
         color: #fff;
+        padding: 0 8px 0 10px;
+        min-width: 86px;
       }
 
-      .filter-pill--ghost {
+      .filter-pill--sort {
         background: var(--chip-inactive-bg);
         color: var(--evs-black);
+        padding: 0 6px 0 8px;
+        width: 62px;
       }
 
-      .filter-pill .slice-img {
-        height: 20px;
+      /* 1464:451/465 热区 20×20，箭头图形约 10×6（@3x PNG 30×18） */
+      .filter-pill__chevron {
+        height: 10px;
         width: auto;
+        flex-shrink: 0;
       }
 
       .filter-convert {
@@ -470,19 +479,19 @@
           <button type="button" class="filter-pill filter-pill--primary">
             Default
             <img
-              class="slice-img"
+              class="filter-pill__chevron slice-img"
               src="assets/icon-chevron-light.png"
               alt=""
-              height="20"
+              height="10"
             />
           </button>
-          <button type="button" class="filter-pill filter-pill--ghost">
+          <button type="button" class="filter-pill filter-pill--sort">
             Sort
             <img
-              class="slice-img"
+              class="filter-pill__chevron slice-img"
               src="assets/icon-chevron-dark.png"
               alt=""
-              height="20"
+              height="10"
             />
           </button>
           <label class="filter-convert">
