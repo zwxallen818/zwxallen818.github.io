@@ -13,7 +13,6 @@
 | 7 | Banner | 1464:454 | gutter | 图 width 100% |
 | 8 | 筛选条 | 1464:464+684+690 | gutter | code 按钮+勾选 |
 | 9 | 商品 grid | 1465:609 | gutter | grid 2 列 → auto-fill |
-
-**不实现**：1464:686「Hot Recommendation」及底部推荐卡（设计验收视口未见，见 AUDIT skip）。
+| 10 | Hot 区 | 1464:685+686 | gutter | 分隔条 + 标题 + 双列推荐卡 |
 
 y 裁切见 `blocks-crops.json`。
