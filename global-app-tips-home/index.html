@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Tips · Global APP</title>
+    <!-- messy-figma-responsive · 11974:7723 · 414×1312 · tokens.json -->
+    <style>
+      :root {
+        --evs-black: #253746;
+        --evs-blue: #3877f5;
+        --chip-bg: #ebf1fe;
+        --muted: #b1c4de;
+        --page-bg: #f3f6fa;
+        --header-grad: linear-gradient(
+          180deg,
+          #dfe2e7 0%,
+          rgba(223, 226, 231, 0) 100%
+        );
+        --font: -apple-system, BlinkMacSystemFont, "SF Pro", "PingFang SC",
+          "Segoe UI", sans-serif;
+        --gutter: 20px;
+        --col-gap: 10px;
+        --card-radius: 14px;
+        --tab-h: 102px;
+        --fw-semibold: 600;
+        --fw-regular: 400;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font);
+        color: var(--evs-black);
+        background: var(--page-bg);
+        padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0));
+      }
+
+      .page {
+        width: 100%;
+        max-width: 414px;
+        margin: 0 auto;
+        min-height: 1312px;
+        position: relative;
+      }
+
+      .header-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 178px;
+        background: var(--header-grad);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .header-bg__img {
+        display: block;
+        width: 100%;
+        height: 178px;
+        object-fit: cover;
+        object-position: top;
+      }
+
+      /* cluster-lr · Tips + 消息 */
+      .top-bar {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        min-height: 55px;
+        padding: 5px var(--gutter) 0;
+      }
+
+      .top-bar__title {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.528px;
+        line-height: 1.2;
+        flex-shrink: 0;
+      }
+
+      .top-bar__msg {
+        margin-left: auto;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .top-bar__msg img {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+
+      /* gutter · 促销条 */
+      .promo {
+        position: relative;
+        z-index: 1;
+        margin: 6px 16px 0;
+        border-radius: 13px;
+        overflow: hidden;
+        min-height: 115px;
+      }
+
+      .promo__bg {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: top;
+      }
+
+      .promo__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 23px 13px;
+      }
+
+      .promo__bulb {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .promo__text {
+        flex: 1;
+        min-width: 0;
+        color: #fff;
+      }
+
+      .promo__title {
+        font-size: 13px;
+        font-weight: var(--fw-semibold);
+        line-height: 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .promo__desc {
+        margin-top: 0;
+        font-size: 12px;
+        font-weight: var(--fw-regular);
+        line-height: 17px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .promo__chevron {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      /* 分类横向滚动 */
+      .chips {
+        position: relative;
+        z-index: 1;
+        margin-top: 11px;
+        padding: 11px 0 9px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+
+      .chips__track {
+        display: flex;
+        gap: 5px;
+        padding: 0 var(--gutter);
+        width: max-content;
+      }
+
+      .chip {
+        flex-shrink: 0;
+        padding: 6px 10px;
+        border-radius: 15px;
+        background: var(--chip-bg);
+        border: 1px solid transparent;
+        font-size: 13px;
+        font-weight: var(--fw-regular);
+        color: var(--evs-black);
+        letter-spacing: -0.312px;
+        line-height: 16px;
+        white-space: nowrap;
+      }
+
+      .chip--active {
+        color: var(--evs-blue);
+        font-weight: var(--fw-semibold);
+        border-color: var(--evs-blue);
+      }
+
+      /* 瀑布流 */
+      .feed {
+        position: relative;
+        z-index: 1;
+        column-count: 2;
+        column-gap: var(--col-gap);
+        padding: 0 var(--gutter);
+      }
+
+      .feed-card {
+        break-inside: avoid;
+        margin-bottom: var(--col-gap);
+        width: 100%;
+      }
+
+      .feed-card--full img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: var(--card-radius);
+      }
+
+      .feed-card--built {
+        background: #fff;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+      }
+
+      .feed-card__media {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--card-radius) var(--card-radius) 0 0;
+      }
+
+      .feed-card__media img {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: top;
+      }
+
+      .feed-card__body {
+        padding: 8px 10px 12px;
+      }
+
+      .feed-card__title {
+        font-size: 14px;
+        font-weight: var(--fw-regular);
+        line-height: 17px;
+        letter-spacing: -0.384px;
+        color: var(--evs-black);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .feed-card__meta {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        gap: 4px;
+        font-size: 13px;
+        letter-spacing: -0.312px;
+      }
+
+      .feed-card__avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .feed-card__author {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .feed-card__views {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        flex-shrink: 0;
+      }
+
+      .feed-card__eye {
+        width: 12px;
+        height: 9px;
+      }
+
+      .feed-end {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 6px auto 24px;
+        max-width: 235px;
+        color: var(--muted);
+        font-size: 14px;
+        letter-spacing: -0.336px;
+      }
+
+      .feed-end::before,
+      .feed-end::after {
+        content: "";
+        flex: 0 0 30px;
+        height: 0.5px;
+        background: var(--muted);
+        border-radius: 1px;
+      }
+
+      /* 底栏 Tab · code */
+      .tab-bar {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 100%;
+        max-width: 414px;
+        height: var(--tab-h);
+        background: #fff;
+        box-shadow: 0 -1px 0 rgba(37, 55, 70, 0.06);
+        z-index: 10;
+        padding-bottom: env(safe-area-inset-bottom, 0);
+      }
+
+      .tab-bar__inner {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 8.5px 12px 0;
+        height: 67px;
+      }
+
+      .tab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        border: 0;
+        background: transparent;
+        font-family: inherit;
+        font-size: 12px;
+        line-height: 17px;
+        color: var(--muted);
+        cursor: pointer;
+        min-width: 48px;
+      }
+
+      .tab--active {
+        color: var(--evs-black);
+        font-weight: var(--fw-semibold);
+      }
+
+      .tab img {
+        width: 34px;
+        height: 34px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" data-node-id="11974:7723">
+      <div class="header-bg" aria-hidden="true">
+        <img
+          class="header-bg__img"
+          src="assets/header-gradient.png"
+          alt=""
+          width="414"
+          height="178"
+        />
+      </div>
+
+      <header class="top-bar" data-layout="cluster-lr">
+        <h1 class="top-bar__title" data-node-id="11974:7830">Tips</h1>
+        <button type="button" class="top-bar__msg" aria-label="消息">
+          <img src="assets/icon-message.png" alt="" width="40" height="40" />
+        </button>
+      </header>
+
+      <section class="promo" data-layout="gutter" data-node-id="11974:8010">
+        <img
+          class="promo__bg"
+          src="assets/promo-banner-bg.png"
+          alt=""
+          width="382"
+          height="115"
+        />
+        <div class="promo__content">
+          <img
+            class="promo__bulb"
+            src="assets/banner-bulb.png"
+            alt=""
+            width="60"
+            height="60"
+          />
+          <div class="promo__text">
+            <p class="promo__title" data-node-id="11974:8014">
+              Product Comparison Tips: Check out tips for using your device.
+            </p>
+            <p class="promo__desc" data-node-id="11974:8015">
+              Discover new features, shortcuts, maintenance tips, and common
+              troubleshooting solutions for your device.
+            </p>
+          </div>
+          <img
+            class="promo__chevron"
+            src="assets/icon-chevron-right.png"
+            alt=""
+            width="20"
+            height="20"
+          />
+        </div>
+      </section>
+
+      <nav class="chips" aria-label="分类">
+        <div class="chips__track" data-node-id="11974:7854">
+          <span class="chip">Brand information</span>
+          <span class="chip chip--active">Selected Good Items</span>
+          <span class="chip">Interactive topics</span>
+          <span class="chip">Technical popularization</span>
+          <span class="chip">Usage Tips</span>
+        </div>
+      </nav>
+
+      <main class="feed" aria-label="内容流">
+        <article class="feed-card feed-card--full">
+          <img
+            src="assets/card-large.png"
+            alt="New DIBAO T10 OMNI"
+            width="184"
+            height="326"
+          />
+        </article>
+        <article class="feed-card feed-card--full">
+          <img
+            src="assets/card-medium.png"
+            alt="Award collection"
+            width="184"
+            height="248"
+          />
+        </article>
+        <article class="feed-card feed-card--built">
+          <div class="feed-card__media">
+            <img src="assets/feed-1.png" alt="" width="184" />
+          </div>
+          <div class="feed-card__body">
+            <p class="feed-card__title">
+              Skilled at scanning and mopping, able to step back and chat, it's
+              like a sweeping...
+            </p>
+            <div class="feed-card__meta">
+              <img
+                class="feed-card__avatar"
+                src="assets/avatar-sample.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+              <span class="feed-card__author">Technical Bric...</span>
+              <span class="feed-card__views">
+                <img
+                  class="feed-card__eye"
+                  src="assets/icon-eye.png"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+                1087
+              </span>
+            </div>
+          </div>
+        </article>
+        <article class="feed-card feed-card--built">
+          <div class="feed-card__media">
+            <img src="assets/feed-2.png" alt="" width="184" />
+          </div>
+          <div class="feed-card__body">
+            <p class="feed-card__title">
+              Artificial Intelligence Video Butler, Mastering the situation in
+              the palm of your hand
+            </p>
+            <div class="feed-card__meta">
+              <img
+                class="feed-card__avatar"
+                src="assets/avatar-sample.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+              <span class="feed-card__author">Sinbad the Sai...</span>
+              <span class="feed-card__views">
+                <img
+                  class="feed-card__eye"
+                  src="assets/icon-eye.png"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+                1087
+              </span>
+            </div>
+          </div>
+        </article>
+        <article class="feed-card feed-card--built">
+          <div class="feed-card__media">
+            <img src="assets/feed-3.png" alt="" width="184" />
+          </div>
+          <div class="feed-card__body">
+            <p class="feed-card__title">
+              Versailles in front of my best friend again
+            </p>
+            <div class="feed-card__meta">
+              <img
+                class="feed-card__avatar"
+                src="assets/avatar-sample.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+              <span class="feed-card__author">Official admini...</span>
+              <span class="feed-card__views">
+                <img
+                  class="feed-card__eye"
+                  src="assets/icon-eye.png"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+                1087
+              </span>
+            </div>
+          </div>
+        </article>
+        <article class="feed-card feed-card--built">
+          <div class="feed-card__media">
+            <img src="assets/feed-4.png" alt="" width="184" />
+          </div>
+          <div class="feed-card__body">
+            <p class="feed-card__title">Easy to set up virtual walls</p>
+            <div class="feed-card__meta">
+              <img
+                class="feed-card__avatar"
+                src="assets/avatar-sample.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+              <span class="feed-card__author">Technical Bric...</span>
+              <span class="feed-card__views">
+                <img
+                  class="feed-card__eye"
+                  src="assets/icon-eye.png"
+                  alt=""
+                  width="12"
+                  height="9"
+                />
+                1087
+              </span>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <p class="feed-end" data-node-id="11974:7825">到底了～</p>
+
+      <nav class="tab-bar" aria-label="主导航" data-node-id="11974:7831">
+        <div class="tab-bar__inner">
+          <button type="button" class="tab tab--active">
+            <img src="assets/tab-robot.png" alt="" width="34" height="34" />
+            <span>机器人</span>
+          </button>
+          <button type="button" class="tab">
+            <img src="assets/tab-mall.png" alt="" width="34" height="34" />
+            <span>商城</span>
+          </button>
+          <button type="button" class="tab">
+            <img src="assets/tab-discover.png" alt="" width="34" height="34" />
+            <span>发现</span>
+          </button>
+          <button type="button" class="tab">
+            <img src="assets/tab-mine.png" alt="" width="34" height="34" />
+            <span>我的</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

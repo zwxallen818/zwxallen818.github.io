@@ -1,0 +1,25 @@
+/** 11974:7723 · Global APP Tips 首页 */
+export const SLICE_MANIFEST = {
+  fileKey: "Q1tcc8nYpjqViTXz6kx1ED",
+  rootNodeId: "11974:7723",
+  canvas: { width: 414, height: 1312 },
+  assets: [
+    { file: "header-gradient.png", nodeId: "11974:7724", scale: 2 },
+    { file: "icon-message.png", nodeId: "11974:7829", scale: 3 },
+    { file: "promo-banner-bg.png", nodeId: "11974:8010", scale: 2 },
+    { file: "banner-bulb.png", nodeId: "11974:8012", scale: 3 },
+    { file: "icon-chevron-right.png", nodeId: "11974:8016", scale: 3 },
+    { file: "card-large.png", nodeId: "11974:7739", scale: 2 },
+    { file: "card-medium.png", nodeId: "11974:7777", scale: 2 },
+    { file: "feed-1.png", nodeId: "11974:7737", scale: 2 },
+    { file: "feed-2.png", nodeId: "11974:7758", scale: 2 },
+    { file: "feed-3.png", nodeId: "11974:7782", scale: 2 },
+    { file: "feed-4.png", nodeId: "11974:7808", scale: 2 },
+    { file: "icon-eye.png", nodeId: "11974:7743", scale: 3 },
+    { file: "avatar-sample.png", nodeId: "11974:7753", scale: 3 },
+    { file: "tab-robot.png", nodeId: "I11974:7834;0:101629", scale: 3 },
+    { file: "tab-mall.png", nodeId: "I11974:7833;0:101620", scale: 3 },
+    { file: "tab-discover.png", nodeId: "I11974:7839;0:101636", scale: 3 },
+    { file: "tab-mine.png", nodeId: "I11974:7840;0:101642", scale: 3 },
+  ],
+} as const;
