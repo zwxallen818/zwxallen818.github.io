@@ -9,7 +9,9 @@
     { "id": "ai-dev", "label": "AI 开发" },
     { "id": "figma", "label": "Figma" },
     { "id": "workflow", "label": "效率提升" },
-    { "id": "frontend", "label": "前端" }
+    { "id": "frontend", "label": "前端" },
+    { "id": "devops", "label": "研发管理" },
+    { "id": "lark", "label": "飞书" }
   ],
   "skills": [
     {
@@ -36,6 +38,58 @@
       "install": {
         "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/messy-figma-responsive ~/.cursor/skills/",
         "project": "cp -r skills/messy-figma-responsive .cursor/skills/"
+      }
+    },
+    {
+      "id": "zentao-bug",
+      "name": "zentao-bug",
+      "title": "禅道 Bug 管理",
+      "description": "通过 CLI 管理禅道 Bug：查询、解决、指派。支持 zentao.myecovacs.com 定制枚举（solved/no），解决时默认指派回提单人。",
+      "categories": ["devops", "workflow"],
+      "tags": ["ZenTao", "Bug", "CLI", "Python"],
+      "version": "1.0.0",
+      "updated": "2026-05-25",
+      "source": "Cursor",
+      "iconColor": "#ea4335",
+      "iconLetter": "Z",
+      "needsApiKey": true,
+      "stats": { "stars": 0, "downloads": 0 },
+      "path": "skills/zentao-bug",
+      "detailUrl": "skills/zentao-bug/",
+      "triggers": [
+        "查看我的禅道 bug",
+        "解决 / 指派 bug",
+        "zentao bug list"
+      ],
+      "install": {
+        "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/zentao-bug ~/.cursor/skills/",
+        "project": "cp -r skills/zentao-bug .cursor/skills/"
+      }
+    },
+    {
+      "id": "lark-attendance",
+      "name": "lark-attendance",
+      "title": "飞书考勤打卡查询",
+      "description": "查询飞书考勤打卡记录，支持按日期筛选。依赖 lark-cli 和 lark-shared 认证。",
+      "categories": ["lark", "workflow"],
+      "tags": ["飞书", "Lark", "考勤", "打卡", "Attendance"],
+      "version": "1.0.0",
+      "updated": "2026-05-25",
+      "source": "Cursor",
+      "iconColor": "#3370ff",
+      "iconLetter": "A",
+      "needsApiKey": true,
+      "stats": { "stars": 0, "downloads": 0 },
+      "path": "skills/lark-attendance",
+      "detailUrl": "skills/lark-attendance/",
+      "triggers": [
+        "查考勤记录",
+        "今天打卡了吗",
+        "attendance query"
+      ],
+      "install": {
+        "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/lark-attendance ~/.cursor/skills/",
+        "project": "cp -r skills/lark-attendance .cursor/skills/"
       }
     }
   ]

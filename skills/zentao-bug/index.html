@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zentao-bug — Allen Skills</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" fill="currentColor"/></svg>
+        <span class="brand-text">Allen Skills</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/zwxallen818/cursor-skills" class="btn-publish" target="_blank" rel="noopener">+ 添加 Skill</a>
+        <a href="https://github.com/zwxallen818/cursor-skills" class="header-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail-page">
+    <div class="container">
+      <a class="back-link" href="../../">← 返回全部技能</a>
+      <section class="detail-hero">
+        <div class="detail-header">
+          <div class="detail-icon" style="background:#ea4335">Z</div>
+          <div>
+            <h1 class="detail-title">禅道 Bug 管理</h1>
+            <p class="detail-id">zentao-bug</p>
+            <p class="detail-desc">通过 CLI 管理禅道 Bug：查询、解决、指派。支持 myecovacs 定制枚举，解决时默认指派回提单人。</p>
+            <div class="detail-meta-row">
+              <span>版本 1.0.0</span><span>更新 2026-05-25</span><span>来自 Cursor</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="detail-grid">
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>何时启用</h2><ul>
+            <li>查看分配给自己的禅道 Bug</li>
+            <li>解决 / 指派 / 设置解决方案</li>
+            <li>zentao.myecovacs.com 站点专用</li>
+          </ul></section>
+          <section class="panel" style="margin-bottom:16px"><h2>核心命令</h2><div class="code-block"><button class="copy-btn" data-copy="cmds">复制</button>
+<pre id="cmd-cmds"># 检查认证
+python scripts/zentao_cli.py auth check
+
+# 查看我的 Bug
+python scripts/zentao_cli.py bugs mine --limit 100
+
+# 查看 Bug 详情
+python scripts/zentao_cli.py bugs get 12345
+
+# 解决 Bug（默认指派回提单人）
+python scripts/zentao_cli.py bugs resolve 12345 \
+  --resolution solved \
+  --assigned-to OPENER_ACCOUNT \
+  --comment "已解决，请提单人核验"
+
+# 指派给其他人
+python scripts/zentao_cli.py bugs assign 12345 \
+  --to other_user --comment "转交处理"</pre></div></section>
+          <section class="panel"><h2>解决方案枚举（myecovacs）</h2><ul>
+            <li><code>solved</code> — 已解决（不要用 fixed）</li>
+            <li><code>no</code> — 不解决</li>
+            <li><code>notrepro</code> — 无法重现</li>
+            <li><code>invalid</code> — 无效缺陷</li>
+            <li><code>postponed</code> — 推迟解决</li>
+          </ul></section>
+        </div>
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>安装（全局）</h2>
+            <div class="code-block"><button class="copy-btn" data-copy="global">复制</button>
+            <pre id="cmd-global">git clone git@github.com:zwxallen818/cursor-skills.git
+cd cursor-skills
+cp -r skills/zentao-bug ~/.cursor/skills/</pre></div>
+          </section>
+          <section class="panel" style="margin-bottom:16px"><h2>环境变量</h2>
+            <p style="margin:0 0 12px;font-size:14px;color:var(--muted,#64748b)">在 skill 目录下创建 <code>.env</code> 文件（勿提交仓库）。</p>
+            <div class="code-block"><button class="copy-btn" data-copy="env">复制</button>
+            <pre id="cmd-env">ZENTAO_BASE_URL="https://zentao.example.com/"
+ZENTAO_USERNAME="your_account"
+ZENTAO_PASSWORD="your_password"</pre></div>
+          </section>
+          <section class="panel"><h2>安全工作流</h2><ul>
+            <li>修改前先 <code>bugs get</code> 查看详情</li>
+            <li>解决时默认指派回提单人</li>
+            <li>确认后再加 <code>--yes</code></li>
+            <li>密码不打印、不持久化</li>
+          </ul></section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><p>© Allen Skills</p></div></footer>
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
+      const text = document.getElementById('cmd-' + btn.dataset.copy).textContent;
+      try { await navigator.clipboard.writeText(text); btn.textContent = '已复制'; setTimeout(() => btn.textContent = '复制', 1500); } catch { btn.textContent = '失败'; }
+    }));
+  </script>
+</body></html>
