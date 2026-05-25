@@ -105,19 +105,49 @@
         font-family: inherit;
       }
 
-      /* Nav */
+      /* Nav · 8031:1988 — 宽屏时右侧图标须贴右，禁止整栏 contain 居中 */
       .nav {
         position: relative;
         z-index: 2;
         background: #fff;
+        width: 100%;
       }
 
-      .nav__bar {
-        display: block;
+      .nav__inner {
+        display: flex;
+        align-items: center;
         height: 55px;
         width: 100%;
-        object-fit: contain;
-        object-position: left center;
+        padding: 0 var(--mx);
+      }
+
+      .nav__back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .nav__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .nav__icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
       }
 
       /* Hero */
@@ -544,13 +574,34 @@
       </div>
 
       <header class="nav" data-node-id="8031:1988">
-        <img
-          class="nav__bar slice-img"
-          src="./assets/nav-bar.png"
-          alt=""
-          width="414"
-          height="55"
-        />
+        <div class="nav__inner">
+          <button type="button" class="nav__back" aria-label="Back" data-node-id="I8031:1988;0:1749">
+            <img
+              class="slice-img"
+              src="./assets/icon-nav-back.png"
+              alt=""
+              height="24"
+            />
+          </button>
+          <div class="nav__actions">
+            <button type="button" class="nav__icon-btn" aria-label="Cart" data-node-id="I8031:1988;0:1752">
+              <img
+                class="slice-img"
+                src="./assets/icon-nav-cart.png"
+                alt=""
+                height="24"
+              />
+            </button>
+            <button type="button" class="nav__icon-btn" aria-label="Customer service" data-node-id="I8031:1988;0:1758">
+              <img
+                class="slice-img"
+                src="./assets/icon-nav-service.png"
+                alt=""
+                height="36"
+              />
+            </button>
+          </div>
+        </div>
       </header>
 
       <section class="hero" data-node-id="8031:1893">

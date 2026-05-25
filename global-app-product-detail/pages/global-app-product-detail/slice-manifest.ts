@@ -7,7 +7,9 @@ export const canvas = { width: 414, height: 3776 };
 
 export const sliceManifest = [
   { nodeId: "8031:2048", kind: "code", reason: "渐变促销条 + 文案" },
-  { nodeId: "8031:1988", kind: "slice", file: "nav-bar.png", reason: "返回/购物车/客服组合" },
+  { nodeId: "I8031:1988;0:1749", kind: "slice", file: "icon-nav-back.png", reason: "返回" },
+  { nodeId: "I8031:1988;0:1752", kind: "slice", file: "icon-nav-cart.png", reason: "购物车" },
+  { nodeId: "I8031:1988;0:1758", kind: "slice", file: "icon-nav-service.png", reason: "客服" },
   { nodeId: "8031:1896", kind: "slice", file: "hero-product.png", reason: "主产品图" },
   { nodeId: "8031:1898", kind: "slice", file: "carousel-dots.png", reason: "轮播指示" },
   { nodeId: "8031:1900", kind: "code", reason: "标题文案" },

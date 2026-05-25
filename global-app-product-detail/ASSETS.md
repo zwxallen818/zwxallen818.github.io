@@ -8,7 +8,11 @@ Figma: [Global APP 国际](https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED/)
 |-------|---------|------|
 | Hero product | 8031:1896 | `hero-product.png` |
 | Carousel dots | 8031:1898 | `carousel-dots.png` |
-| Nav bar (back/cart/service) | 8031:1988 | `nav-bar.png` |
+| Nav back | I8031:1988;0:1749 | `icon-nav-back.png` |
+| Nav cart | I8031:1988;0:1752 | `icon-nav-cart.png` |
+| Nav service | I8031:1988;0:1758 | `icon-nav-service.png` |
+
+导航用 **flex + margin-left:auto**，勿用整栏 `nav-bar.png`（宽屏 `object-fit:contain` 会把右侧图标挤到中间）。
 | Feature — Effortless | 8031:1919 | `feature-effortless.png` |
 | Feature — Suction | 8031:1954 | `feature-suction.png` |
 | Feature — Mopping | 8031:1924 | `feature-mopping.png` |
