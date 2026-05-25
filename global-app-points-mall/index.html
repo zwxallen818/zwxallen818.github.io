@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Points Mall · Global APP</title>
+    <!-- messy-figma-responsive · 1464:396 · 414×2489 -->
+    <style>
+      :root {
+        --evs-black: #253746;
+        --evs-blue: #3877f5;
+        --muted: #849cbc;
+        --text-dark: #333333;
+        --divider: #eef1f5;
+        --section-bg: #f5f5f5;
+        --page-bg: #ffffff;
+        --chip-inactive-bg: rgba(169, 196, 255, 0.14);
+        --btn-ghost-bg: #ebf1fe;
+        --font: -apple-system, BlinkMacSystemFont, "SF Pro", "PingFang SC",
+          sans-serif;
+        --mx: 16px;
+        --gutter: 20px;
+        --col-gap: 14px;
+        --card-min: 180px;
+        --oval-h: 273px;
+        --fw-semibold: 600;
+        --fw-medium: 500;
+        --fw-regular: 400;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font);
+        color: var(--evs-black);
+        background: var(--page-bg);
+      }
+
+      .page {
+        width: 100%;
+        max-width: none;
+        min-height: 100vh;
+        background: var(--page-bg);
+      }
+
+      .oval-header {
+        width: 100%;
+        line-height: 0;
+        overflow: hidden;
+      }
+
+      .oval-header__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: var(--oval-h);
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      .hero-zone {
+        position: relative;
+        padding: 0 var(--mx);
+        margin-top: -200px;
+        z-index: 1;
+      }
+
+      .nav-row {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding-top: 24px;
+      }
+
+      .nav-row__back {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .nav-row__title {
+        flex: 1;
+        text-align: center;
+        font-size: 18px;
+        font-weight: var(--fw-semibold);
+        color: var(--evs-black);
+        margin: 0 8px;
+      }
+
+      .nav-row__rules {
+        font-size: 14px;
+        color: var(--evs-blue);
+        text-decoration: none;
+        flex-shrink: 0;
+        line-height: 16px;
+      }
+
+      .points-row {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        gap: 8px;
+      }
+
+      .points-row__icon.slice-img {
+        height: 46px;
+        width: auto;
+        flex-shrink: 0;
+      }
+
+      .points-row__value {
+        font-size: 32px;
+        font-weight: var(--fw-medium);
+        line-height: 28px;
+        color: var(--text-dark);
+      }
+
+      .points-row__badge.slice-img {
+        height: 20px;
+        width: auto;
+      }
+
+      .points-row__link {
+        margin-left: auto;
+        font-size: 14px;
+        color: var(--evs-blue);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .sub-points {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--evs-blue);
+        line-height: 20px;
+      }
+
+      .sub-points__sep {
+        width: 1px;
+        height: 21px;
+        background: var(--divider);
+      }
+
+      .notice {
+        margin-top: 14px;
+        background: #fff;
+        border-radius: 12px;
+        padding: 12px 14px;
+        box-shadow: 0 1px 8px rgba(37, 55, 70, 0.06);
+      }
+
+      .notice__line {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+
+      .notice__line:last-child {
+        margin-bottom: 0;
+      }
+
+      .notice__line::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--evs-blue);
+        opacity: 0.5;
+        margin-top: 6px;
+        flex-shrink: 0;
+      }
+
+      .notice__line--en {
+        font-size: 15px;
+      }
+
+      .main {
+        margin-top: 20px;
+        background: #fff;
+        border-radius: 20px 20px 0 0;
+        padding-bottom: 32px;
+        width: 100%;
+      }
+
+      .banner-wrap {
+        padding: 26px var(--gutter) 0;
+      }
+
+      .banner-wrap__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .banner-dots {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin-top: 8px;
+      }
+
+      .banner-dots span {
+        display: block;
+        height: 2px;
+        border-radius: 1px;
+        background: rgba(56, 119, 245, 0.25);
+      }
+
+      .banner-dots span:first-child {
+        width: 23px;
+        background: var(--evs-blue);
+      }
+
+      .banner-dots span:last-child {
+        width: 63px;
+      }
+
+      .filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 24px var(--gutter) 12px;
+        width: 100%;
+      }
+
+      .filter-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        height: 32px;
+        padding: 0 12px;
+        border-radius: 16px;
+        border: 0;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: var(--fw-medium);
+        cursor: pointer;
+      }
+
+      .filter-pill--primary {
+        background: var(--evs-blue);
+        color: #fff;
+      }
+
+      .filter-pill--ghost {
+        background: var(--chip-inactive-bg);
+        color: var(--evs-black);
+      }
+
+      .filter-pill .slice-img {
+        height: 20px;
+        width: auto;
+      }
+
+      .filter-convert {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--evs-black);
+      }
+
+      .filter-convert .slice-img {
+        height: 30px;
+        width: auto;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--col-gap);
+        padding: 0 var(--gutter);
+        width: 100%;
+      }
+
+      @media (min-width: 640px) {
+        .product-grid {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(var(--card-min), 1fr)
+          );
+        }
+      }
+
+      .product-grid img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .section-gap {
+        height: 8px;
+        background: var(--section-bg);
+        width: 100%;
+        margin: 24px 0 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        font-weight: var(--fw-medium);
+        color: var(--text-dark);
+        padding: 0 var(--gutter) 12px;
+      }
+
+      .hot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--col-gap);
+        padding: 0 var(--gutter) 24px;
+        width: 100%;
+      }
+
+      @media (min-width: 640px) {
+        .hot-grid {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(var(--card-min), 1fr)
+          );
+        }
+      }
+
+      .hot-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(224, 224, 224, 0.5);
+        overflow: hidden;
+      }
+
+      .hot-card__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: #fff;
+      }
+
+      .hot-card__body {
+        padding: 10px;
+      }
+
+      .hot-card__sub {
+        font-size: 14px;
+        color: var(--evs-black);
+        opacity: 0.7;
+        line-height: 22px;
+        margin-bottom: 4px;
+      }
+
+      .hot-card__price {
+        font-size: 20px;
+        font-weight: var(--fw-medium);
+        color: var(--evs-blue);
+      }
+
+      .hot-card__price small {
+        font-size: 14px;
+      }
+
+      .hot-card__btn {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        height: 32px;
+        border: 0;
+        border-radius: 16px;
+        background: var(--btn-ghost-bg);
+        color: var(--evs-blue);
+        font-size: 14px;
+        font-weight: var(--fw-semibold);
+        font-family: inherit;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" data-node-id="1464:396">
+      <header class="oval-header" data-layout="full-bleed">
+        <img
+          class="oval-header__img"
+          src="assets/oval-header.png"
+          alt=""
+          width="414"
+          height="273"
+        />
+      </header>
+
+      <div class="hero-zone">
+        <header class="nav-row" data-layout="cluster-lr">
+          <button type="button" class="nav-row__back" aria-label="返回">
+            <img
+              class="slice-img"
+              src="assets/icon-back.png"
+              alt=""
+              height="26"
+            />
+          </button>
+          <h1 class="nav-row__title" data-node-id="1464:407">Points Mall</h1>
+          <a href="#" class="nav-row__rules" data-node-id="1464:413">Rules</a>
+        </header>
+
+        <div class="points-row">
+          <img
+            class="points-row__icon slice-img"
+            src="assets/icon-points.png"
+            alt=""
+            height="46"
+          />
+          <span class="points-row__value" data-node-id="1464:414">3000</span>
+          <img
+            class="points-row__badge slice-img"
+            src="assets/badge-vip.png"
+            alt="VIP 1"
+            height="20"
+          />
+          <a href="#" class="points-row__link" data-node-id="1464:416"
+            >Exchange record</a
+          >
+        </div>
+
+        <div class="sub-points" data-node-id="1582:5193">
+          <span data-node-id="1582:5195">通常ポイント：200000</span>
+          <span class="sub-points__sep" aria-hidden="true"></span>
+          <span data-node-id="1582:5194">限定ポイント：100000</span>
+        </div>
+
+        <aside class="notice" data-node-id="1601:914">
+          <p class="notice__line notice__line--en">
+            You have 1897 credits about to expire
+          </p>
+          <p class="notice__line">你有xxxx通用积分即将过期</p>
+          <p class="notice__line">доход +200</p>
+        </aside>
+      </div>
+
+      <main class="main">
+        <section class="banner-wrap" data-layout="gutter">
+          <img
+            class="banner-wrap__img"
+            src="assets/banner.png"
+            alt=""
+            width="374"
+            height="100"
+          />
+          <div class="banner-dots" aria-hidden="true">
+            <span></span><span></span>
+          </div>
+        </section>
+
+        <div class="filters" data-layout="gutter">
+          <button type="button" class="filter-pill filter-pill--primary">
+            Default
+            <img
+              class="slice-img"
+              src="assets/icon-chevron-light.png"
+              alt=""
+              height="20"
+            />
+          </button>
+          <button type="button" class="filter-pill filter-pill--ghost">
+            Sort
+            <img
+              class="slice-img"
+              src="assets/icon-chevron-dark.png"
+              alt=""
+              height="20"
+            />
+          </button>
+          <label class="filter-convert">
+            <img
+              class="slice-img"
+              src="assets/icon-checkbox.png"
+              alt=""
+              height="30"
+            />
+            <span data-node-id="1464:690">Convertibility</span>
+          </label>
+        </div>
+
+        <section class="product-grid" aria-label="积分兑换">
+          <img
+            src="assets/product-card-hero.png"
+            alt="ECOVACS product"
+            width="180"
+          />
+          <img
+            src="assets/product-card-tall.png"
+            alt="ECOVACS DEEBOT N8 Edge Brush"
+            width="180"
+          />
+          <img
+            src="assets/product-card-mid.png"
+            alt="Hot Wash Free Wet"
+            width="180"
+          />
+          <img src="assets/product-card-mid.png" alt="" width="180" />
+          <img src="assets/product-card-tall.png" alt="" width="180" />
+          <img src="assets/product-card-mid.png" alt="" width="180" />
+        </section>
+
+        <div class="section-gap" data-node-id="1464:685"></div>
+        <h2 class="section-title" data-node-id="1464:686">
+          Hot Recommendation
+        </h2>
+        <section class="hot-grid">
+          <article class="hot-card">
+            <img
+              class="hot-card__img"
+              src="assets/product-card-mid.png"
+              alt="ECOVACS DEEBOT N8+"
+            />
+            <div class="hot-card__body">
+              <p class="hot-card__sub">Save $12.00 with …</p>
+              <p class="hot-card__price"><small>AUD</small> 2,499.00</p>
+              <button type="button" class="hot-card__btn">покупк</button>
+            </div>
+          </article>
+          <article class="hot-card">
+            <img
+              class="hot-card__img"
+              src="assets/product-card-mid.png"
+              alt="ECOVACS DEEBOT N9"
+            />
+            <div class="hot-card__body">
+              <p class="hot-card__sub">Save $12.00 with …</p>
+              <p class="hot-card__price"><small>AUD</small> 2,499.00</p>
+              <button type="button" class="hot-card__btn">покупк</button>
+            </div>
+          </article>
+          <article class="hot-card">
+            <img
+              class="hot-card__img"
+              src="assets/product-card-mid.png"
+              alt=""
+            />
+            <div class="hot-card__body">
+              <p class="hot-card__sub">Save $12.00 with …</p>
+              <p class="hot-card__price"><small>AUD</small> 2,499.00</p>
+              <button type="button" class="hot-card__btn">покупк</button>
+            </div>
+          </article>
+          <article class="hot-card">
+            <img
+              class="hot-card__img"
+              src="assets/product-card-mid.png"
+              alt=""
+            />
+            <div class="hot-card__body">
+              <p class="hot-card__sub">Save $12.00 with …</p>
+              <p class="hot-card__price"><small>AUD</small> 2,499.00</p>
+              <button type="button" class="hot-card__btn">покупк</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
