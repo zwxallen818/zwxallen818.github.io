@@ -17,9 +17,9 @@ export const SLICE_MANIFEST = {
     { file: "feed-4.png", nodeId: "11974:7808", scale: 2 },
     { file: "icon-eye.png", nodeId: "11974:7743", scale: 3 },
     { file: "avatar-sample.png", nodeId: "11974:7753", scale: 3 },
-    { file: "tab-robot.png", nodeId: "I11974:7834;0:101629", scale: 3 },
-    { file: "tab-mall.png", nodeId: "I11974:7833;0:101620", scale: 3 },
-    { file: "tab-discover.png", nodeId: "I11974:7839;0:101636", scale: 3 },
-    { file: "tab-mine.png", nodeId: "I11974:7840;0:101642", scale: 3 },
+    { file: "tab-icon-robot.png", nodeId: "11974:7834", scale: 3 },
+    { file: "tab-icon-mall.png", nodeId: "11974:7833", scale: 3 },
+    { file: "tab-icon-discover.png", nodeId: "11974:7839", scale: 3 },
+    { file: "tab-icon-mine.png", nodeId: "11974:7840", scale: 3 },
   ],
 } as const;

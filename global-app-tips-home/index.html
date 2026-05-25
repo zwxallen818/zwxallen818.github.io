@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <title>Tips · Global APP</title>
-    <!-- messy-figma-responsive · 11974:7723 · 414×1312 · tokens.json -->
+    <!-- messy-figma-responsive · 11974:7723 · 锚点 414×1312 · 全宽响应 -->
     <style>
       :root {
         --evs-black: #253746;
@@ -15,6 +15,11 @@
         --chip-bg: #ebf1fe;
         --muted: #b1c4de;
         --page-bg: #f3f6fa;
+        --promo-grad: linear-gradient(
+          135deg,
+          #00c0fa 0%,
+          #015eea 100%
+        );
         --header-grad: linear-gradient(
           180deg,
           #dfe2e7 0%,
@@ -22,10 +27,14 @@
         );
         --font: -apple-system, BlinkMacSystemFont, "SF Pro", "PingFang SC",
           "Segoe UI", sans-serif;
-        --gutter: 20px;
+        /* API: 内容区左右沟 20px（卡片 x=20）；促销条 x=16 用 16 */
+        --mx: 20px;
+        --promo-mx: 16px;
         --col-gap: 10px;
+        --card-min: 184px;
         --card-radius: 14px;
         --tab-h: 102px;
+        --tab-icon-h: 34px;
         --fw-semibold: 600;
         --fw-regular: 400;
       }
@@ -43,23 +52,24 @@
         padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0));
       }
 
+      /* 禁止锁死 414；全宽 + 沟内自适应 */
       .page {
         width: 100%;
-        max-width: 414px;
-        margin: 0 auto;
-        min-height: 1312px;
+        max-width: none;
+        min-height: 100vh;
         position: relative;
       }
 
       .header-bg {
         position: absolute;
         left: 0;
+        right: 0;
         top: 0;
-        width: 100%;
         height: 178px;
         background: var(--header-grad);
         pointer-events: none;
         z-index: 0;
+        overflow: hidden;
       }
 
       .header-bg__img {
@@ -67,17 +77,17 @@
         width: 100%;
         height: 178px;
         object-fit: cover;
-        object-position: top;
+        object-position: top center;
       }
 
-      /* cluster-lr · Tips + 消息 */
       .top-bar {
         position: relative;
         z-index: 2;
         display: flex;
         align-items: center;
         min-height: 55px;
-        padding: 5px var(--gutter) 0;
+        padding: 5px var(--mx) 0;
+        width: 100%;
       }
 
       .top-bar__title {
@@ -99,43 +109,34 @@
         flex-shrink: 0;
       }
 
-      .top-bar__msg img {
-        display: block;
-        width: 40px;
+      .top-bar__msg .slice-img {
         height: 40px;
+        width: auto;
       }
 
-      /* gutter · 促销条 */
+      /* 促销：纯 CSS 渐变 + flex，禁止底图叠字 */
       .promo {
         position: relative;
         z-index: 1;
-        margin: 6px 16px 0;
+        margin: 6px var(--promo-mx) 0;
         border-radius: 13px;
-        overflow: hidden;
-        min-height: 115px;
+        background: var(--promo-grad);
+        padding: 23px 13px;
+        width: calc(100% - 2 * var(--promo-mx));
+        max-width: none;
       }
 
-      .promo__bg {
-        display: block;
-        width: 100%;
-        height: auto;
-        vertical-align: top;
-      }
-
-      .promo__content {
-        position: absolute;
-        inset: 0;
+      .promo__inner {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 23px 13px;
+        width: 100%;
       }
 
-      .promo__bulb {
-        width: 60px;
+      .promo__bulb.slice-img {
         height: 60px;
+        width: auto;
         flex-shrink: 0;
-        object-fit: contain;
       }
 
       .promo__text {
@@ -148,30 +149,25 @@
         font-size: 13px;
         font-weight: var(--fw-semibold);
         line-height: 18px;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        margin-bottom: 2px;
       }
 
       .promo__desc {
-        margin-top: 0;
         font-size: 12px;
         font-weight: var(--fw-regular);
         line-height: 17px;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
 
-      .promo__chevron {
-        width: 20px;
+      .promo__chevron.slice-img {
         height: 20px;
+        width: auto;
         flex-shrink: 0;
       }
 
-      /* 分类横向滚动 */
       .chips {
         position: relative;
         z-index: 1;
@@ -180,6 +176,7 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        width: 100%;
       }
 
       .chips::-webkit-scrollbar {
@@ -189,8 +186,9 @@
       .chips__track {
         display: flex;
         gap: 5px;
-        padding: 0 var(--gutter);
+        padding: 0 var(--mx);
         width: max-content;
+        min-width: 100%;
       }
 
       .chip {
@@ -213,19 +211,28 @@
         border-color: var(--evs-blue);
       }
 
-      /* 瀑布流 */
       .feed {
         position: relative;
         z-index: 1;
-        column-count: 2;
-        column-gap: var(--col-gap);
-        padding: 0 var(--gutter);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--col-gap);
+        padding: 0 var(--mx);
+        width: 100%;
+      }
+
+      @media (min-width: 640px) {
+        .feed {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(var(--card-min), 1fr)
+          );
+        }
       }
 
       .feed-card {
-        break-inside: avoid;
-        margin-bottom: var(--col-gap);
         width: 100%;
+        min-width: 0;
       }
 
       .feed-card--full img {
@@ -239,12 +246,6 @@
         background: #fff;
         border-radius: var(--card-radius);
         overflow: hidden;
-      }
-
-      .feed-card__media {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--card-radius) var(--card-radius) 0 0;
       }
 
       .feed-card__media img {
@@ -263,7 +264,6 @@
         font-weight: var(--fw-regular);
         line-height: 17px;
         letter-spacing: -0.384px;
-        color: var(--evs-black);
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -279,11 +279,10 @@
         letter-spacing: -0.312px;
       }
 
-      .feed-card__avatar {
-        width: 20px;
+      .feed-card__avatar.slice-img {
         height: 20px;
+        width: auto;
         border-radius: 50%;
-        object-fit: cover;
         flex-shrink: 0;
       }
 
@@ -302,9 +301,9 @@
         flex-shrink: 0;
       }
 
-      .feed-card__eye {
-        width: 12px;
+      .feed-card__eye.slice-img {
         height: 9px;
+        width: auto;
       }
 
       .feed-end {
@@ -315,6 +314,7 @@
         justify-content: center;
         gap: 8px;
         margin: 6px auto 24px;
+        padding: 0 var(--mx);
         max-width: 235px;
         color: var(--muted);
         font-size: 14px;
@@ -330,15 +330,15 @@
         border-radius: 1px;
       }
 
-      /* 底栏 Tab · code */
+      /* 底栏：全宽贴边，图标各 nodeId 34px 高 */
       .tab-bar {
         position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
         bottom: 0;
         width: 100%;
-        max-width: 414px;
-        height: var(--tab-h);
+        max-width: none;
+        height: calc(var(--tab-h) + env(safe-area-inset-bottom, 0));
         background: #fff;
         box-shadow: 0 -1px 0 rgba(37, 55, 70, 0.06);
         z-index: 10;
@@ -349,8 +349,11 @@
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
-        padding: 8.5px 12px 0;
-        height: 67px;
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 8.5px var(--mx) 0;
+        height: var(--tab-h);
       }
 
       .tab {
@@ -365,7 +368,8 @@
         line-height: 17px;
         color: var(--muted);
         cursor: pointer;
-        min-width: 48px;
+        flex: 1;
+        max-width: 96px;
       }
 
       .tab--active {
@@ -373,9 +377,9 @@
         font-weight: var(--fw-semibold);
       }
 
-      .tab img {
-        width: 34px;
-        height: 34px;
+      .tab .slice-img {
+        height: var(--tab-icon-h);
+        width: auto;
         display: block;
       }
     </style>
@@ -387,32 +391,27 @@
           class="header-bg__img"
           src="assets/header-gradient.png"
           alt=""
-          width="414"
-          height="178"
         />
       </div>
 
       <header class="top-bar" data-layout="cluster-lr">
         <h1 class="top-bar__title" data-node-id="11974:7830">Tips</h1>
         <button type="button" class="top-bar__msg" aria-label="消息">
-          <img src="assets/icon-message.png" alt="" width="40" height="40" />
+          <img
+            class="slice-img"
+            src="assets/icon-message.png"
+            alt=""
+            height="40"
+          />
         </button>
       </header>
 
       <section class="promo" data-layout="gutter" data-node-id="11974:8010">
-        <img
-          class="promo__bg"
-          src="assets/promo-banner-bg.png"
-          alt=""
-          width="382"
-          height="115"
-        />
-        <div class="promo__content">
+        <div class="promo__inner">
           <img
-            class="promo__bulb"
+            class="promo__bulb slice-img"
             src="assets/banner-bulb.png"
             alt=""
-            width="60"
             height="60"
           />
           <div class="promo__text">
@@ -425,10 +424,9 @@
             </p>
           </div>
           <img
-            class="promo__chevron"
+            class="promo__chevron slice-img"
             src="assets/icon-chevron-right.png"
             alt=""
-            width="20"
             height="20"
           />
         </div>
@@ -463,38 +461,7 @@
         </article>
         <article class="feed-card feed-card--built">
           <div class="feed-card__media">
-            <img src="assets/feed-1.png" alt="" width="184" />
-          </div>
-          <div class="feed-card__body">
-            <p class="feed-card__title">
-              Skilled at scanning and mopping, able to step back and chat, it's
-              like a sweeping...
-            </p>
-            <div class="feed-card__meta">
-              <img
-                class="feed-card__avatar"
-                src="assets/avatar-sample.png"
-                alt=""
-                width="20"
-                height="20"
-              />
-              <span class="feed-card__author">Technical Bric...</span>
-              <span class="feed-card__views">
-                <img
-                  class="feed-card__eye"
-                  src="assets/icon-eye.png"
-                  alt=""
-                  width="12"
-                  height="9"
-                />
-                1087
-              </span>
-            </div>
-          </div>
-        </article>
-        <article class="feed-card feed-card--built">
-          <div class="feed-card__media">
-            <img src="assets/feed-2.png" alt="" width="184" />
+            <img src="assets/feed-2.png" alt="" />
           </div>
           <div class="feed-card__body">
             <p class="feed-card__title">
@@ -503,19 +470,17 @@
             </p>
             <div class="feed-card__meta">
               <img
-                class="feed-card__avatar"
+                class="feed-card__avatar slice-img"
                 src="assets/avatar-sample.png"
                 alt=""
-                width="20"
                 height="20"
               />
               <span class="feed-card__author">Sinbad the Sai...</span>
               <span class="feed-card__views">
                 <img
-                  class="feed-card__eye"
+                  class="feed-card__eye slice-img"
                   src="assets/icon-eye.png"
                   alt=""
-                  width="12"
                   height="9"
                 />
                 1087
@@ -525,7 +490,36 @@
         </article>
         <article class="feed-card feed-card--built">
           <div class="feed-card__media">
-            <img src="assets/feed-3.png" alt="" width="184" />
+            <img src="assets/feed-1.png" alt="" />
+          </div>
+          <div class="feed-card__body">
+            <p class="feed-card__title">
+              Skilled at scanning and mopping, able to step back and chat, it's
+              like a sweeping...
+            </p>
+            <div class="feed-card__meta">
+              <img
+                class="feed-card__avatar slice-img"
+                src="assets/avatar-sample.png"
+                alt=""
+                height="20"
+              />
+              <span class="feed-card__author">Technical Bric...</span>
+              <span class="feed-card__views">
+                <img
+                  class="feed-card__eye slice-img"
+                  src="assets/icon-eye.png"
+                  alt=""
+                  height="9"
+                />
+                1087
+              </span>
+            </div>
+          </div>
+        </article>
+        <article class="feed-card feed-card--built">
+          <div class="feed-card__media">
+            <img src="assets/feed-3.png" alt="" />
           </div>
           <div class="feed-card__body">
             <p class="feed-card__title">
@@ -533,19 +527,17 @@
             </p>
             <div class="feed-card__meta">
               <img
-                class="feed-card__avatar"
+                class="feed-card__avatar slice-img"
                 src="assets/avatar-sample.png"
                 alt=""
-                width="20"
                 height="20"
               />
               <span class="feed-card__author">Official admini...</span>
               <span class="feed-card__views">
                 <img
-                  class="feed-card__eye"
+                  class="feed-card__eye slice-img"
                   src="assets/icon-eye.png"
                   alt=""
-                  width="12"
                   height="9"
                 />
                 1087
@@ -555,25 +547,23 @@
         </article>
         <article class="feed-card feed-card--built">
           <div class="feed-card__media">
-            <img src="assets/feed-4.png" alt="" width="184" />
+            <img src="assets/feed-4.png" alt="" />
           </div>
           <div class="feed-card__body">
             <p class="feed-card__title">Easy to set up virtual walls</p>
             <div class="feed-card__meta">
               <img
-                class="feed-card__avatar"
+                class="feed-card__avatar slice-img"
                 src="assets/avatar-sample.png"
                 alt=""
-                width="20"
                 height="20"
               />
               <span class="feed-card__author">Technical Bric...</span>
               <span class="feed-card__views">
                 <img
-                  class="feed-card__eye"
+                  class="feed-card__eye slice-img"
                   src="assets/icon-eye.png"
                   alt=""
-                  width="12"
                   height="9"
                 />
                 1087
@@ -587,20 +577,40 @@
 
       <nav class="tab-bar" aria-label="主导航" data-node-id="11974:7831">
         <div class="tab-bar__inner">
-          <button type="button" class="tab tab--active">
-            <img src="assets/tab-robot.png" alt="" width="34" height="34" />
+          <button type="button" class="tab">
+            <img
+              class="slice-img"
+              src="assets/tab-icon-robot.png"
+              alt=""
+              height="34"
+            />
             <span>机器人</span>
           </button>
           <button type="button" class="tab">
-            <img src="assets/tab-mall.png" alt="" width="34" height="34" />
+            <img
+              class="slice-img"
+              src="assets/tab-icon-mall.png"
+              alt=""
+              height="34"
+            />
             <span>商城</span>
           </button>
-          <button type="button" class="tab">
-            <img src="assets/tab-discover.png" alt="" width="34" height="34" />
+          <button type="button" class="tab tab--active">
+            <img
+              class="slice-img"
+              src="assets/tab-icon-discover.png"
+              alt=""
+              height="34"
+            />
             <span>发现</span>
           </button>
           <button type="button" class="tab">
-            <img src="assets/tab-mine.png" alt="" width="34" height="34" />
+            <img
+              class="slice-img"
+              src="assets/tab-icon-mine.png"
+              alt=""
+              height="34"
+            />
             <span>我的</span>
           </button>
         </div>
