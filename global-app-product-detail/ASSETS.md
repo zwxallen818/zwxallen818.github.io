@@ -1,5 +1,7 @@
 # Global APP Product Detail (8031:1892)
 
+完整 Skill 交付物见 `pages/global-app-product-detail/`（AUDIT · BLOCKS · COMPARE · QA · slice-manifest · tokens）。
+
 Figma: [Global APP 国际](https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED/) · node `8031:1892` · 414×3776
 
 | Asset | Node ID | File |

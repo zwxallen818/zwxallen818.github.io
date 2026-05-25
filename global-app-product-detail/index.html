@@ -10,24 +10,26 @@
     <!-- messy-figma-responsive · 8031:1892 · 414×3776 · Global APP 国际 -->
     <style>
       :root {
+        /* tokens.md · Figma API 实测 */
         --evs-black: #253746;
         --evs-blue: #3877f5;
         --muted: #849cbc;
         --divider: #e8edf5;
+        --divider-section: #f5f5f5;
+        --card-border: #ebebeb;
+        --card-radius: 16px;
         --gift-bg: rgba(198, 210, 233, 0.14);
         --promo-gold: #f7b500;
         --font: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", sans-serif;
         --mx: 16px;
-        --content: calc(100% - 32px);
         --bottom-h: 111px;
         --btn-add-bg: #ebf1fe;
         --btn-radius: 25px;
-        --bar-border: #e3e3e3;
-        --btn-buy-grad: linear-gradient(
-          145deg,
-          #4098ff 0%,
-          #356bf1 100%
-        );
+        --bar-border: #eef1f5;
+        --btn-buy-grad: linear-gradient(145deg, #3f97ff 0%, #346bf1 100%);
+        --fw-semibold: 600;
+        --fw-medium: 500;
+        --fw-regular: 400;
       }
 
       * {
@@ -58,35 +60,49 @@
 
       /* Promo strip */
       .promo-strip {
+        position: relative;
+        height: 40px;
+        padding: 0 var(--mx);
+        overflow: hidden;
+      }
+
+      .promo-strip::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(21.32deg, #f3d854 13.53%, #ffb900 70.57%);
+        opacity: 0.2;
+        pointer-events: none;
+      }
+
+      .promo-strip__inner {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 40px;
-        padding: 8px var(--mx);
-        background: linear-gradient(
-          21.32deg,
-          #f3d854 13.53%,
-          #ffb900 70.57%
-        );
-        opacity: 0.92;
+        width: 100%;
+        height: 40px;
       }
 
       .promo-strip__text {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: var(--fw-medium);
         color: var(--promo-gold);
         line-height: 22px;
       }
 
       .promo-strip__copy {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: var(--fw-medium);
         color: var(--promo-gold);
         border: 0.5px solid var(--promo-gold);
         border-radius: 14px;
-        padding: 4px 12px;
+        height: 28px;
+        padding: 0 12px;
         background: transparent;
         cursor: pointer;
+        font-family: inherit;
       }
 
       /* Nav */
@@ -136,7 +152,7 @@
 
       .title-block__name {
         font-size: 28px;
-        font-weight: 600;
+        font-weight: var(--fw-semibold);
         line-height: 36px;
       }
 
@@ -153,18 +169,19 @@
       }
 
       .section--divider {
-        border-top: 8px solid #f5f5f5;
+        border-top: 8px solid var(--divider-section);
       }
 
       .section__title {
         font-size: 20px;
-        font-weight: 600;
+        font-weight: var(--fw-semibold);
         line-height: 30px;
         margin-bottom: 12px;
       }
 
       .section__title--lg {
         font-size: 24px;
+        font-weight: var(--fw-semibold);
         line-height: 32px;
         margin-bottom: 16px;
       }
@@ -182,7 +199,8 @@
       .link {
         color: var(--evs-blue);
         font-size: 16px;
-        font-weight: 600;
+        font-weight: var(--fw-semibold);
+        line-height: 20px;
         text-decoration: none;
       }
 
@@ -192,7 +210,8 @@
         gap: 4px;
         margin-top: 12px;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: var(--fw-medium);
+        line-height: 22px;
         color: var(--muted);
       }
 
@@ -202,15 +221,15 @@
 
       /* Model cards */
       .model-card {
-        border: 1px solid var(--divider);
-        border-radius: 12px;
+        border: 1px solid var(--card-border);
+        border-radius: var(--card-radius);
         padding: 16px;
         margin-bottom: 12px;
         background: #fff;
       }
 
       .model-card--selected {
-        border: 2px solid var(--evs-blue);
+        border: 1px solid var(--evs-blue);
       }
 
       .model-card__row {
@@ -314,10 +333,9 @@
       .tabs {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        padding: 20px var(--mx) 12px;
+        height: 78px;
+        padding: 20px 16px 8px 24px;
         background: #fff;
-        border-bottom: 1px solid var(--divider);
         position: sticky;
         top: 0;
         z-index: 3;
@@ -325,34 +343,42 @@
 
       .tabs__item {
         font-size: 20px;
+        line-height: 30px;
         color: var(--evs-black);
+        font-weight: var(--fw-regular);
         background: none;
         border: none;
-        padding: 0 8px 8px;
+        padding: 0 0 8px;
         cursor: pointer;
         position: relative;
       }
 
       .tabs__item--active {
-        font-weight: 600;
+        font-weight: var(--fw-semibold);
       }
 
-      .tabs__item--active::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-        width: 33px;
+      .tabs__indicator {
+        display: block;
+        margin: 4px auto 0;
         height: 4px;
-        background: var(--evs-blue);
-        border-radius: 2px;
+      }
+
+      .tabs__group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .tabs__sep {
         width: 1px;
         height: 17px;
         background: var(--divider);
+        margin: 0 23px;
+        flex-shrink: 0;
+      }
+
+      .tabs__spacer {
+        flex: 1;
       }
 
       /* Features */
@@ -509,10 +535,12 @@
   <body>
     <div class="page" data-figma-node="8031:1892">
       <div class="promo-strip" data-node-id="8031:2048">
-        <span class="promo-strip__text" data-node-id="8031:2049">xx%OFF:aaaaxx aaa</span>
-        <button type="button" class="promo-strip__copy" data-node-id="8031:2051">
-          Copy
-        </button>
+        <div class="promo-strip__inner">
+          <span class="promo-strip__text" data-node-id="8031:2049">xx%OFF:aaaaxx aaa</span>
+          <button type="button" class="promo-strip__copy" data-node-id="8031:2051">
+            Copy
+          </button>
+        </div>
       </div>
 
       <header class="nav" data-node-id="8031:1988">
@@ -569,7 +597,7 @@
         </div>
       </section>
 
-      <section class="section section--divider">
+      <section id="model-section" class="section section--divider">
         <h2 class="section__title--lg" data-node-id="8031:1901">Model Selection</h2>
 
         <article class="model-card model-card--selected" data-node-id="8031:1902">
@@ -634,13 +662,23 @@
       </section>
 
       <nav class="tabs section--divider" aria-label="Product sections" data-node-id="8031:2014">
-        <button type="button" class="tabs__item tabs__item--active" data-node-id="8031:2015">
-          Features
-        </button>
+        <div class="tabs__group">
+          <button type="button" class="tabs__item tabs__item--active" data-node-id="8031:2015">
+            Features
+          </button>
+          <img
+            class="tabs__indicator slice-img"
+            src="./assets/tab-indicator.png"
+            alt=""
+            height="4"
+            data-node-id="8031:2017"
+          />
+        </div>
         <span class="tabs__sep" aria-hidden="true"></span>
         <button type="button" class="tabs__item" data-node-id="8031:2016">Reviews</button>
         <span class="tabs__sep" aria-hidden="true"></span>
         <button type="button" class="tabs__item" data-node-id="8031:2021">FAQ</button>
+        <span class="tabs__spacer" aria-hidden="true"></span>
       </nav>
 
       <section class="feature" data-node-id="8031:1916">
