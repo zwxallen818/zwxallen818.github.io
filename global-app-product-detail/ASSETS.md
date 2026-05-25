@@ -1,0 +1,22 @@
+# Global APP Product Detail (8031:1892)
+
+Figma: [Global APP 国际](https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED/) · node `8031:1892` · 414×3776
+
+| Asset | Node ID | File |
+|-------|---------|------|
+| Hero product | 8031:1896 | `hero-product.png` |
+| Carousel dots | 8031:1898 | `carousel-dots.png` |
+| Nav bar (back/cart/service) | 8031:1988 | `nav-bar.png` |
+| Feature — Effortless | 8031:1919 | `feature-effortless.png` |
+| Feature — Suction | 8031:1954 | `feature-suction.png` |
+| Feature — Mopping | 8031:1924 | `feature-mopping.png` |
+| Gift thumbnail | 8031:2033 | `gift-thumb.png` |
+| Arrow right | 8031:2056 | `icon-arrow-right.png` |
+| Payment icons | 8031:1992 | `payment-icons.png` |
+| Bottom bar CTA | 8031:1993 | `bottom-bar.png` |
+| Tab indicator | 8031:2017 | `tab-indicator.png` |
+| Reference | 8031:1892 | `reference/ref-full-api.png` |
+
+Export: Figma Images API `format=png&scale=2`. Do not use MCP asset URLs as PNG.
+
+Not implemented: Status Bar (`8031:2024`), Home Indicator (`8031:1994`).
