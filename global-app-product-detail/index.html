@@ -20,6 +20,8 @@
         --mx: 16px;
         --content: calc(100% - 32px);
         --bottom-h: 111px;
+        --btn-add-bg: #e8f0ff;
+        --btn-radius: 9px;
       }
 
       * {
@@ -420,23 +422,71 @@
         margin-top: 12px;
       }
 
-      /* Bottom bar */
+      /* Bottom bar — 8031:1993，文案与按钮用代码布局 */
       .bottom-bar {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         z-index: 10;
-        padding-bottom: env(safe-area-inset-bottom, 0);
         background: #fff;
         border-top: 1px solid var(--divider);
+        padding: 10px var(--mx) calc(10px + env(safe-area-inset-bottom, 0));
+        min-height: var(--bottom-h);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
       }
 
-      .bottom-bar__img {
+      .bottom-bar__price {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        gap: 6px;
+        min-height: 32px;
+      }
+
+      .bottom-bar__total-label {
+        font-size: 14px;
+        line-height: 22px;
+        color: var(--muted);
+        text-transform: lowercase;
+      }
+
+      .bottom-bar__total-amount {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+        color: var(--evs-black);
+      }
+
+      .bottom-bar__actions {
+        display: flex;
+        gap: 8px;
         width: 100%;
-        height: var(--bottom-h);
-        display: block;
-        object-fit: fill;
+      }
+
+      .bottom-bar__btn {
+        flex: 1;
+        height: 50px;
+        border: none;
+        border-radius: var(--btn-radius);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.2;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .bottom-bar__btn--add {
+        background: var(--btn-add-bg);
+        color: var(--evs-blue);
+      }
+
+      .bottom-bar__btn--buy {
+        background: var(--evs-blue);
+        color: #fff;
       }
     </style>
   </head>
@@ -664,13 +714,26 @@
       </section>
 
       <footer class="bottom-bar" data-node-id="8031:1993">
-        <img
-          class="bottom-bar__img slice-img"
-          src="./assets/bottom-bar.png"
-          alt="Total $799.98 — Add to Bag — Buy Now"
-          width="414"
-          height="111"
-        />
+        <div class="bottom-bar__price">
+          <span class="bottom-bar__total-label" data-node-id="I8031:1993;0:1780">total</span>
+          <span class="bottom-bar__total-amount" data-node-id="I8031:1993;0:1779">$799.98</span>
+        </div>
+        <div class="bottom-bar__actions">
+          <button
+            type="button"
+            class="bottom-bar__btn bottom-bar__btn--add"
+            data-node-id="I8031:1993;0:1778"
+          >
+            Add to Bag
+          </button>
+          <button
+            type="button"
+            class="bottom-bar__btn bottom-bar__btn--buy"
+            data-node-id="I8031:1993;0:1776"
+          >
+            Buy Now
+          </button>
+        </div>
       </footer>
     </div>
   </body>

@@ -13,8 +13,9 @@ Figma: [Global APP 国际](https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED/)
 | Gift thumbnail | 8031:2033 | `gift-thumb.png` |
 | Arrow right | 8031:2056 | `icon-arrow-right.png` |
 | Payment icons | 8031:1992 | `payment-icons.png` |
-| Bottom bar CTA | 8031:1993 | `bottom-bar.png` |
 | Tab indicator | 8031:2017 | `tab-indicator.png` |
+
+Bottom bar (`8031:1993`): **code layout** — `total` / `$799.98` / Add to Bag / Buy Now（勿整栏切图）。
 | Reference | 8031:1892 | `reference/ref-full-api.png` |
 
 Export: Figma Images API `format=png&scale=2`. Do not use MCP asset URLs as PNG.
