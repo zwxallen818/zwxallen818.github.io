@@ -20,8 +20,14 @@
         --mx: 16px;
         --content: calc(100% - 32px);
         --bottom-h: 111px;
-        --btn-add-bg: #e8f0ff;
-        --btn-radius: 9px;
+        --btn-add-bg: #ebf1fe;
+        --btn-radius: 25px;
+        --bar-border: #e3e3e3;
+        --btn-buy-grad: linear-gradient(
+          145deg,
+          #4098ff 0%,
+          #356bf1 100%
+        );
       }
 
       * {
@@ -422,41 +428,43 @@
         margin-top: 12px;
       }
 
-      /* Bottom bar — 8031:1993，文案与按钮用代码布局 */
+      /* Bottom bar — 8031:1993 · API: 414×111, btn 187×50 cr25, gap8, mx16 */
       .bottom-bar {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         z-index: 10;
+        box-sizing: border-box;
+        height: calc(var(--bottom-h) + env(safe-area-inset-bottom, 0));
+        padding: 0 var(--mx) calc(5px + env(safe-area-inset-bottom, 0));
         background: #fff;
-        border-top: 1px solid var(--divider);
-        padding: 10px var(--mx) calc(10px + env(safe-area-inset-bottom, 0));
-        min-height: var(--bottom-h);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 10px;
+        border-top: 1px solid var(--bar-border);
+        display: grid;
+        grid-template-rows: 56px 50px;
+        align-content: end;
+        row-gap: 0;
       }
 
       .bottom-bar__price {
         display: flex;
         align-items: baseline;
         justify-content: flex-end;
-        gap: 6px;
-        min-height: 32px;
+        align-self: end;
+        gap: 4px;
+        padding-bottom: 2px;
       }
 
       .bottom-bar__total-label {
         font-size: 14px;
+        font-weight: 400;
         line-height: 22px;
         color: var(--muted);
-        text-transform: lowercase;
       }
 
       .bottom-bar__total-amount {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 500;
         line-height: 32px;
         color: var(--evs-black);
       }
@@ -465,16 +473,18 @@
         display: flex;
         gap: 8px;
         width: 100%;
+        height: 50px;
       }
 
       .bottom-bar__btn {
         flex: 1;
+        max-width: 187px;
         height: 50px;
         border: none;
         border-radius: var(--btn-radius);
         font-size: 18px;
         font-weight: 500;
-        line-height: 1.2;
+        line-height: 21px;
         cursor: pointer;
         font-family: inherit;
       }
@@ -485,8 +495,14 @@
       }
 
       .bottom-bar__btn--buy {
-        background: var(--evs-blue);
+        background: var(--btn-buy-grad);
         color: #fff;
+      }
+
+      @media (min-width: 415px) {
+        .bottom-bar__btn {
+          max-width: none;
+        }
       }
     </style>
   </head>
