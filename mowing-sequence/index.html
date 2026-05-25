@@ -274,20 +274,20 @@
       }
 
       .btn-ok {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        border: none;
-        background: transparent;
-        padding: 0;
-        cursor: pointer;
-        line-height: 0;
-      }
-
-      .btn-ok img {
         height: 52px;
-        width: 100%;
-        object-fit: fill;
-        display: block;
+        border: none;
+        border-radius: 9px;
+        background: var(--evs-black);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1;
+        cursor: pointer;
+        text-transform: capitalize;
       }
 
       .slice-img {
@@ -449,22 +449,13 @@
             <!-- Area3 current -->
             <article class="step step--with-robot">
               <div class="step__rail">
-                <div class="step__dot" data-node-id="3792:35704">
-                  <img
-                    class="step__dot-outer slice-img"
-                    src="./assets/timeline-dot-outer.png"
-                    alt=""
-                    height="12"
-                    data-node-id="3792:35705"
-                  />
-                  <img
-                    class="step__dot-inner slice-img"
-                    src="./assets/timeline-dot-inner.png"
-                    alt=""
-                    height="8"
-                    data-node-id="3792:35706"
-                  />
-                </div>
+                <img
+                  class="step__icon step__icon--done slice-img"
+                  src="./assets/timeline-dot-active.png"
+                  alt=""
+                  height="12"
+                  data-node-id="3792:35704"
+                />
                 <div class="step__line"></div>
               </div>
               <div class="step__content">
@@ -615,14 +606,7 @@
         </div>
 
         <footer class="sheet__footer">
-          <button type="button" class="btn-ok" data-node-id="3792:35597">
-            <img
-              class="slice-img"
-              src="./assets/btn-ok.png"
-              alt="OK"
-              height="52"
-            />
-          </button>
+          <button type="button" class="btn-ok" data-node-id="3792:35597">OK</button>
         </footer>
       </section>
     </div>
