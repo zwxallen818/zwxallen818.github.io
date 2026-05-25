@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Header Oval · Global APP</title>
+    <!-- messy-figma-responsive · 1464:398 · 414×273 · 全宽装饰顶区 -->
+    <style>
+      :root {
+        --oval-h: 273px;
+        --page-bg: #f3f6fa;
+        --grad-fallback: linear-gradient(
+          145deg,
+          #dce3ef 0%,
+          #ecf0f7 100%
+        );
+        --mx: 20px;
+        --font: -apple-system, BlinkMacSystemFont, "SF Pro", "PingFang SC",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font);
+        background: var(--page-bg);
+        color: #253746;
+      }
+
+      .page {
+        width: 100%;
+        max-width: none;
+        min-height: 100vh;
+      }
+
+      /* full-bleed · 装饰顶图随屏拉宽，禁止锁 414 */
+      .oval-header {
+        position: relative;
+        width: 100%;
+        max-width: none;
+        min-height: var(--oval-h);
+        background: #fff var(--grad-fallback);
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .oval-header__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: var(--oval-h);
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      /* 演示：沟内文案叠在装饰区下方（与 Tips 顶栏用法一致） */
+      .demo-body {
+        padding: 0 var(--mx) 32px;
+        width: 100%;
+        max-width: none;
+      }
+
+      .demo-bar {
+        display: flex;
+        align-items: center;
+        margin-top: -12px;
+        position: relative;
+        z-index: 1;
+        min-height: 55px;
+      }
+
+      .demo-bar__title {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.528px;
+      }
+
+      .demo-bar__spacer {
+        margin-left: auto;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(37, 55, 70, 0.08);
+      }
+
+      .demo-note {
+        margin-top: 24px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #849cbc;
+      }
+
+      .demo-content {
+        margin-top: 16px;
+        height: 120px;
+        border-radius: 14px;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" data-node-id="1464:398">
+      <header class="oval-header" aria-hidden="true" data-layout="full-bleed">
+        <img
+          class="oval-header__img slice-img"
+          src="assets/oval-header.png"
+          alt=""
+          width="414"
+          height="273"
+        />
+      </header>
+
+      <div class="demo-body">
+        <div class="demo-bar" data-layout="cluster-lr">
+          <h1 class="demo-bar__title">Tips</h1>
+          <div class="demo-bar__spacer" aria-hidden="true"></div>
+        </div>
+        <p class="demo-note">
+          节点 1464:398「Oval」为全宽顶部装饰背景（高 273px）。宽屏下图片
+          width:100% 铺满，无 max-width 锁死。
+        </p>
+        <div class="demo-content" aria-hidden="true"></div>
+      </div>
+    </div>
+  </body>
+</html>
