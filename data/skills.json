@@ -10,8 +10,7 @@
     { "id": "figma", "label": "Figma" },
     { "id": "workflow", "label": "效率提升" },
     { "id": "frontend", "label": "前端" },
-    { "id": "devops", "label": "研发管理" },
-    { "id": "lark", "label": "飞书" }
+    { "id": "devops", "label": "研发管理" }
   ],
   "skills": [
     {
@@ -67,29 +66,30 @@
       }
     },
     {
-      "id": "lark-attendance",
-      "name": "lark-attendance",
-      "title": "飞书考勤打卡查询",
-      "description": "查询飞书考勤打卡记录，支持按日期筛选。依赖 lark-cli 和 lark-shared 认证。",
-      "categories": ["lark", "workflow"],
-      "tags": ["飞书", "Lark", "考勤", "打卡", "Attendance"],
+      "id": "attendance",
+      "name": "attendance",
+      "title": "考勤加班时间查询",
+      "description": "从 Gaia Workforce 系统获取考勤数据，自动计算加班时长。支持本周/上周/本月/自定义日期范围，输出 RDM 工时填报汇总。NTLM SSO + Playwright 自动刷新 cookies。",
+      "categories": ["workflow"],
+      "tags": ["考勤", "加班", "GaiaWorkforce", "Python", "Playwright"],
       "version": "1.0.0",
       "updated": "2026-05-25",
-      "source": "Cursor",
-      "iconColor": "#3370ff",
+      "source": "Claude Code",
+      "iconColor": "#34a853",
       "iconLetter": "A",
       "needsApiKey": true,
       "stats": { "stars": 0, "downloads": 0 },
-      "path": "skills/lark-attendance",
-      "detailUrl": "skills/lark-attendance/",
+      "path": "skills/attendance",
+      "detailUrl": "skills/attendance/",
       "triggers": [
-        "查考勤记录",
-        "今天打卡了吗",
+        "查加班时间",
+        "上周考勤",
+        "工时填报",
         "attendance query"
       ],
       "install": {
-        "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/lark-attendance ~/.cursor/skills/",
-        "project": "cp -r skills/lark-attendance .cursor/skills/"
+        "global": "git clone git@github.com:zwxallen818/cursor-skills.git && cp -r cursor-skills/skills/attendance ~/.claude/skills/",
+        "project": "cp -r skills/attendance .claude/skills/"
       }
     }
   ]

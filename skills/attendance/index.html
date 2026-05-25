@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>attendance — Allen Skills</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" fill="currentColor"/></svg>
+        <span class="brand-text">Allen Skills</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/zwxallen818/cursor-skills" class="btn-publish" target="_blank" rel="noopener">+ 添加 Skill</a>
+        <a href="https://github.com/zwxallen818/cursor-skills" class="header-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail-page">
+    <div class="container">
+      <a class="back-link" href="../../">← 返回全部技能</a>
+      <section class="detail-hero">
+        <div class="detail-header">
+          <div class="detail-icon" style="background:#34a853">A</div>
+          <div>
+            <h1 class="detail-title">考勤加班时间查询</h1>
+            <p class="detail-id">attendance</p>
+            <p class="detail-desc">从 Gaia Workforce 系统获取考勤数据，自动计算加班时长。输出 RDM 工时填报汇总。</p>
+            <div class="detail-meta-row">
+              <span>版本 1.0.0</span><span>更新 2026-05-25</span><span>来自 Claude Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="detail-grid">
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>何时启用</h2><ul>
+            <li>查询上周加班时间，用于 RDM 工时填报</li>
+            <li>查看某天是否打卡、迟到、早退</li>
+            <li>统计本月/上周工时汇总</li>
+          </ul></section>
+          <section class="panel" style="margin-bottom:16px"><h2>核心命令</h2><div class="code-block"><button class="copy-btn" data-copy="cmds">复制</button>
+<pre id="cmd-cmds"># 查询上周加班（RDM 工时填报）
+python3 ~/.claude/skills/attendance/fetch_attendance.py last_week
+
+# 查询本周考勤
+python3 ~/.claude/skills/attendance/fetch_attendance.py this_week
+
+# 查询本月考勤
+python3 ~/.claude/skills/attendance/fetch_attendance.py this_month
+
+# 自定义日期范围
+python3 ~/.claude/skills/attendance/fetch_attendance.py \
+  --start 2026-05-01 --end 2026-05-15
+
+# 强制刷新 cookies
+python3 ~/.claude/skills/attendance/fetch_attendance.py --refresh
+
+# 首次使用：设置登录凭据
+python3 ~/.claude/skills/attendance/fetch_attendance.py --setup-credentials</pre></div></section>
+          <section class="panel"><h2>输出示例</h2><div class="code-block"><pre>📊 考勤数据
+============================================================
+📅 共 5 条记录
+
+📆 2026-05-19
+   ⏰ 上班打卡: 09:02
+   🏠 下班打卡: 20:15
+   🌟 加班时长: 1.5 小时
+
+...
+
+============================================================
+📌 工时填报汇总
+   法定工作日: 5 天
+   基础工时: 40.0 小时
+   加班合计: 6.5 小时
+   应填总工时: 46.5 小时
+   请假日期: 无
+============================================================</pre></div></section>
+        </div>
+        <div>
+          <section class="panel" style="margin-bottom:16px"><h2>安装</h2>
+            <div class="code-block"><button class="copy-btn" data-copy="global">复制</button>
+            <pre id="cmd-global">git clone git@github.com:zwxallen818/cursor-skills.git
+cd cursor-skills
+cp -r skills/attendance ~/.claude/skills/</pre></div>
+          </section>
+          <section class="panel" style="margin-bottom:16px"><h2>依赖安装</h2>
+            <div class="code-block"><button class="copy-btn" data-copy="deps">复制</button>
+            <pre id="cmd-deps">pip install requests playwright requests-ntlm
+playwright install chromium</pre></div>
+          </section>
+          <section class="panel" style="margin-bottom:16px"><h2>认证方式</h2>
+            <p style="margin:0;font-size:14px;color:var(--muted,#64748b)">NTLM SSO + Playwright。自动完成 Windows NTLM 认证 → SSO 跳转 → Keycloak 会话 cookie。cookies 过期时自动刷新。</p>
+          </section>
+          <section class="panel"><h2>加班计算规则</h2><ul>
+            <li><strong>工作日</strong>：18:30 之后算加班，向下取整到 30 分钟</li>
+            <li><strong>休息日</strong>：下班时间 - 上班时间 = 全部算加班</li>
+            <li><strong>请假识别</strong>：自动检测请假/休假/年假等关键词</li>
+          </ul></section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><p>© Allen Skills</p></div></footer>
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
+      const text = document.getElementById('cmd-' + btn.dataset.copy).textContent;
+      try { await navigator.clipboard.writeText(text); btn.textContent = '已复制'; setTimeout(() => btn.textContent = '复制', 1500); } catch { btn.textContent = '失败'; }
+    }));
+  </script>
+</body></html>
