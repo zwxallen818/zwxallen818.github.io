@@ -135,9 +135,15 @@
       .nav__actions {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         margin-left: auto;
         flex-shrink: 0;
+      }
+
+      /* 8031:1988 API：返回/购物车/客服热区均为 30×30（1x），勿混用其它节点尺寸 */
+      .nav__inner img.slice-img {
+        height: 30px;
+        width: auto;
       }
 
       .nav__icon-btn {
@@ -580,7 +586,7 @@
               class="slice-img"
               src="./assets/icon-nav-back.png"
               alt=""
-              height="24"
+              height="30"
             />
           </button>
           <div class="nav__actions">
@@ -589,7 +595,7 @@
                 class="slice-img"
                 src="./assets/icon-nav-cart.png"
                 alt=""
-                height="24"
+                height="30"
               />
             </button>
             <button type="button" class="nav__icon-btn" aria-label="Customer service" data-node-id="I8031:1988;0:1758">
@@ -597,7 +603,7 @@
                 class="slice-img"
                 src="./assets/icon-nav-service.png"
                 alt=""
-                height="36"
+                height="30"
               />
             </button>
           </div>

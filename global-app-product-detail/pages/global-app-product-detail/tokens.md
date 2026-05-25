@@ -20,3 +20,8 @@
 | Section 20 / lh30 / w590 | Semibold | `8031:2020` |
 | Section lg 24 / lh32 / w590 | Semibold | `8031:1901` |
 | Tab 20 / lh30 | Active w590 / inactive w400 | `8031:2015` |
+| Nav 图标热区 | **30×30** 统一（返回/购物车/客服） | `8031:1988` 子 INSTANCE |
+
+## 切图 height 规则
+
+Images API `scale=3` 导出时，`<img height>` **必须写 Figma 1x 逻辑高**（`absoluteBoundingBox`），不是 PNG 像素 ÷ 3 手算，更不能从别的节点抄（如浮动客服 36px）。
