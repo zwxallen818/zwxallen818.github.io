@@ -22,6 +22,7 @@ const url = process.env.URL;
   await page.goto(url, { waitUntil: 'networkidle' });
   await page.waitForTimeout(1200);
   for (const [sel, name] of [
+    ['.product-grid', 'impl-grid'],
     ['#hot-block', 'impl-hot'],
     ['.hot-grid', 'impl-hot-grid'],
   ]) {

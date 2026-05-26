@@ -6,9 +6,21 @@
 
 | 稿面 | 实现 |
 |------|------|
+| `compare/ref-grid.png` | `compare/impl-grid.png`（积分兑换双列） |
 | `compare/ref-hot.png` | `compare/impl-hot.png`（`#hot-block`：灰条+标题+四卡） |
-| `compare/ref-hot.png`（裁切 hot 区） | `compare/impl-hot-grid.png`（仅 grid） |
+| `compare/ref-hot.png`（裁切 hot 区） | `compare/impl-hot-grid.png`（仅 Hot grid） |
 | `compare/ref-hero.png` … | `compare/impl-full.png` |
+
+### 双列网格验收（414 视口 Playwright 实测）
+
+| 指标 | 积分兑换 | Hot |
+|------|----------|-----|
+| 左列 x | 20 | 20 |
+| 列宽 | 180px | 180px |
+| 列缝 | 14px | 14px |
+| 右列 x | 214 | 214 |
+
+`ref-grid` vs `impl-grid` 像素粗估 ~74%（PNG 阴影/高度差）；**列宽与列缝已与稿面对齐**。
 
 生成命令：
 

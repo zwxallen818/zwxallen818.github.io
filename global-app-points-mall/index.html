@@ -294,15 +294,15 @@
         width: auto;
       }
 
-      /* 稿面 414：20 + 180 + 14 + 180 + 20；上下两区必须用同一套列宽 */
+      /* Skill 瀑布流：锚点 W 下 repeat(2, 1fr)；沟 20+列缝 14 → 列宽 180 @414 */
       .card-grid {
         display: grid;
-        grid-template-columns: repeat(2, var(--card-min));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: var(--col-gap);
+        row-gap: var(--col-gap);
         padding-inline: var(--gutter);
         width: 100%;
         box-sizing: border-box;
-        justify-content: center;
       }
 
       @media (min-width: 640px) {
@@ -311,28 +311,14 @@
             auto-fill,
             minmax(var(--card-min), 1fr)
           );
-          justify-content: stretch;
         }
-      }
-
-      .product-grid {
-        row-gap: var(--col-gap);
       }
 
       .product-grid img {
         display: block;
         width: 100%;
-        max-width: var(--card-min);
         height: auto;
         border-radius: 10px;
-        justify-self: center;
-      }
-
-      @media (min-width: 640px) {
-        .product-grid img {
-          max-width: none;
-          justify-self: stretch;
-        }
       }
 
       .section-gap {
@@ -361,10 +347,12 @@
         padding-bottom: 32px;
       }
 
+      .hot-card {
+        min-width: 0;
+      }
+
       .hot-card__shell {
         width: 100%;
-        max-width: var(--card-min);
-        justify-self: center;
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(224, 224, 224, 0.5);
@@ -373,13 +361,6 @@
         flex-direction: column;
         height: 343px;
         box-sizing: border-box;
-      }
-
-      @media (min-width: 640px) {
-        .hot-card__shell {
-          max-width: none;
-          justify-self: stretch;
-        }
       }
 
       .hot-card__media {
@@ -589,24 +570,15 @@
         </div>
 
         <section class="product-grid card-grid" aria-label="积分兑换">
-          <img
-            src="assets/product-card-hero.png"
-            alt="ECOVACS product"
-            width="180"
-          />
+          <img src="assets/product-card-hero.png" alt="ECOVACS product" />
           <img
             src="assets/product-card-tall.png"
             alt="ECOVACS DEEBOT N8 Edge Brush"
-            width="180"
           />
-          <img
-            src="assets/product-card-mid.png"
-            alt="Hot Wash Free Wet"
-            width="180"
-          />
-          <img src="assets/product-card-mid.png" alt="" width="180" />
-          <img src="assets/product-card-tall.png" alt="" width="180" />
-          <img src="assets/product-card-mid.png" alt="" width="180" />
+          <img src="assets/product-card-mid.png" alt="Hot Wash Free Wet" />
+          <img src="assets/product-card-mid.png" alt="" />
+          <img src="assets/product-card-tall.png" alt="" />
+          <img src="assets/product-card-mid.png" alt="" />
         </section>
 
         <div class="hot-block" id="hot-block" data-block="hot">
@@ -618,12 +590,7 @@
           <article class="hot-card" data-node-id="1464:638">
             <div class="hot-card__shell">
               <div class="hot-card__media">
-                <img
-                  src="assets/hot-product-n8.png"
-                  alt=""
-                  width="180"
-                  height="180"
-                />
+                <img src="assets/hot-product-n8.png" alt="" />
               </div>
               <div class="hot-card__body">
                 <p class="hot-card__title" data-node-id="1464:647">
@@ -647,12 +614,7 @@
           <article class="hot-card" data-node-id="1464:658">
             <div class="hot-card__shell">
               <div class="hot-card__media">
-                <img
-                  src="assets/hot-product-n9.png"
-                  alt=""
-                  width="180"
-                  height="180"
-                />
+                <img src="assets/hot-product-n9.png" alt="" />
               </div>
               <div class="hot-card__body">
                 <p class="hot-card__title" data-node-id="1464:670">
@@ -676,12 +638,7 @@
           <article class="hot-card" data-node-id="1464:648">
             <div class="hot-card__shell">
               <div class="hot-card__media">
-                <img
-                  src="assets/hot-product-n8.png"
-                  alt=""
-                  width="180"
-                  height="180"
-                />
+                <img src="assets/hot-product-n8.png" alt="" />
               </div>
               <div class="hot-card__body">
                 <p class="hot-card__title" data-node-id="1464:657">
@@ -705,12 +662,7 @@
           <article class="hot-card" data-node-id="1464:671">
             <div class="hot-card__shell">
               <div class="hot-card__media">
-                <img
-                  src="assets/hot-product-n9.png"
-                  alt=""
-                  width="180"
-                  height="180"
-                />
+                <img src="assets/hot-product-n9.png" alt="" />
               </div>
               <div class="hot-card__body">
                 <p class="hot-card__title" data-node-id="1464:683">
