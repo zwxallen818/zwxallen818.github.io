@@ -20,7 +20,9 @@
 | 列缝 | 14px | 14px |
 | 右列 x | 214 | 214 |
 
-`ref-grid` vs `impl-grid` 像素粗估 ~74%（PNG 阴影/高度差）；**列宽与列缝已与稿面对齐**。
+`ref-grid` vs `impl-grid` 像素粗估 ~71%（PNG 高度/文案差）；**列轨已对齐**。
+
+**商品区显窄原因（已修）**：编组 export 为 440px@2x（含 drop-shadow），缩进 180px 格后白卡视觉变窄、中缝显大。处理：`product-cell` + `product-cell--shadow` 按 `220/180` 放大裁切；hero 改导 `1464:445`（360px@2x 贴边）。
 
 生成命令：
 

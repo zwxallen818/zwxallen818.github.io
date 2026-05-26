@@ -25,6 +25,9 @@
         --gutter: 20px;
         --col-gap: 14px;
         --card-min: 180px;
+        /* 编组 export 440px@2x≈220@1x，卡体 180@1x → 放大裁掉阴影留白 */
+        --card-export-wide: 220;
+        --card-export-tight: 180;
         --oval-h: 273px;
         --fw-semibold: 600;
         --fw-medium: 500;
@@ -294,8 +297,8 @@
         width: auto;
       }
 
-      /* Skill 瀑布流：锚点 W 下 repeat(2, 1fr)；沟 20+列缝 14 → 列宽 180 @414 */
-      .card-grid {
+      /* 上下两区共用列轨：414 = 20 + 180 + 14 + 180 + 20 */
+      .mall-columns .card-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: var(--col-gap);
@@ -306,7 +309,7 @@
       }
 
       @media (min-width: 640px) {
-        .card-grid {
+        .mall-columns .card-grid {
           grid-template-columns: repeat(
             auto-fill,
             minmax(var(--card-min), 1fr)
@@ -314,11 +317,31 @@
         }
       }
 
-      .product-grid img {
-        display: block;
+      .product-cell {
         width: 100%;
-        height: auto;
+        min-width: 0;
+        overflow: hidden;
         border-radius: 10px;
+        line-height: 0;
+        box-shadow: 0 2px 10px rgba(224, 224, 224, 0.5);
+      }
+
+      .product-cell img {
+        display: block;
+        height: auto;
+      }
+
+      .product-cell img {
+        width: 100%;
+        max-width: none;
+      }
+
+      /* 440@2x 编组 export：放大后 overflow 裁阴影，视觉宽度对齐 Hot 180px 白卡 */
+      .product-cell--shadow img {
+        width: calc(100% * var(--card-export-wide) / var(--card-export-tight));
+        margin-left: calc(
+          (100% - 100% * var(--card-export-wide) / var(--card-export-tight)) / 2
+        );
       }
 
       .section-gap {
@@ -569,19 +592,32 @@
           </label>
         </div>
 
-        <section class="product-grid card-grid" aria-label="积分兑换">
-          <img src="assets/product-card-hero.png" alt="ECOVACS product" />
-          <img
-            src="assets/product-card-tall.png"
-            alt="ECOVACS DEEBOT N8 Edge Brush"
-          />
-          <img src="assets/product-card-mid.png" alt="Hot Wash Free Wet" />
-          <img src="assets/product-card-mid.png" alt="" />
-          <img src="assets/product-card-tall.png" alt="" />
-          <img src="assets/product-card-mid.png" alt="" />
-        </section>
+        <div class="mall-columns">
+          <section class="product-grid card-grid" aria-label="积分兑换">
+            <div class="product-cell">
+              <img src="assets/product-card-hero.png" alt="ECOVACS product" />
+            </div>
+            <div class="product-cell product-cell--shadow">
+              <img
+                src="assets/product-card-tall.png"
+                alt="ECOVACS DEEBOT N8 Edge Brush"
+              />
+            </div>
+            <div class="product-cell product-cell--shadow">
+              <img src="assets/product-card-mid.png" alt="Hot Wash Free Wet" />
+            </div>
+            <div class="product-cell product-cell--shadow">
+              <img src="assets/product-card-mid.png" alt="" />
+            </div>
+            <div class="product-cell product-cell--shadow">
+              <img src="assets/product-card-tall.png" alt="" />
+            </div>
+            <div class="product-cell product-cell--shadow">
+              <img src="assets/product-card-mid.png" alt="" />
+            </div>
+          </section>
 
-        <div class="hot-block" id="hot-block" data-block="hot">
+          <div class="hot-block" id="hot-block" data-block="hot">
           <div class="section-gap" data-node-id="1464:685"></div>
           <h2 class="section-title" data-node-id="1464:686">
             Hot Recommendation
@@ -684,6 +720,7 @@
             </div>
           </article>
           </section>
+          </div>
         </div>
       </main>
     </div>
