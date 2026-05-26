@@ -15,8 +15,9 @@
 ## Hot Recommendation（帧底部）
 
 - `1464:685` 分隔条 · code
-- `1464:686` 标题 · code
-- 四卡 **整卡 export**（scale=2）：`1464:638` → `hot-card-1.png` … `1464:671` → `hot-card-4.png`
+- `1464:686` 标题 · code（x=18）
+- 商品图：`1464:646` → `hot-product-n8.png`，`1464:669` → `hot-product-n9.png`
+- 四卡壳 + 标题/Save/AUD/价/按钮 · **code**（左列 `1464:691–696`、`1464:702/707` 为帧级兄弟，整卡 PNG 会漏字）
 - **禁止** 复用积分兑换区 `product-card-*.png`
 
 ## 响应式

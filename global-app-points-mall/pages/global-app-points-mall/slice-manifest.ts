@@ -15,9 +15,7 @@ export const SLICE_MANIFEST = {
     { file: "product-card-hero.png", nodeId: "1464:727", scale: 2 },
     { file: "product-card-tall.png", nodeId: "1464:469", scale: 2 },
     { file: "product-card-mid.png", nodeId: "1464:500", scale: 2 },
-    { file: "hot-card-1.png", nodeId: "1464:638", scale: 2, displayHeight1x: 343 },
-    { file: "hot-card-2.png", nodeId: "1464:658", scale: 2, displayHeight1x: 343 },
-    { file: "hot-card-3.png", nodeId: "1464:648", scale: 2, displayHeight1x: 343 },
-    { file: "hot-card-4.png", nodeId: "1464:671", scale: 2, displayHeight1x: 343 },
+    { file: "hot-product-n8.png", nodeId: "1464:646", scale: 2, displayHeight1x: 180 },
+    { file: "hot-product-n9.png", nodeId: "1464:669", scale: 2, displayHeight1x: 180 },
   ],
 } as const;
