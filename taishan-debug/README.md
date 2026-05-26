@@ -1,14 +1,14 @@
 # 泰山 w3 develop 调试包
 
-**版本：260526.210312.287742**
+**版本：260526.205835.287742**
 
-![二维码](https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526210312)
+![二维码](https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526205835)
 
 | 方式 | 链接 |
 |------|------|
-| **二维码直链** | https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526210312 |
-| **短链** | http://d.9527.com/?name=w3&durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779800312.zip |
-| **ZIP** | https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779800312.zip |
+| **二维码直链** | https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526205835 |
+| **短链** | http://d.9527.com/?name=w3&durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779800315.zip |
+| **ZIP** | https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779800315.zip |
 
 ## 本版（给他人使用）
 
