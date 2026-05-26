@@ -90,13 +90,20 @@
       color: var(--accent);
       text-decoration: none;
     }
+    ul.changelog {
+      margin-top: 8px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    ul.changelog li { margin-bottom: 4px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="../previews/">← 预览索引</a>
     <h1>泰山 H5 · develop 调试包</h1>
-    <p class="meta">版本 260526.180111.287734 · 含「跳过蓝牙进主页」开关</p>
+    <p class="meta">版本 <strong>260526.182908.287736</strong> · 默认跳过蓝牙 · Bridge 防崩溃</p>
 
     <section class="card">
       <img
@@ -110,22 +117,27 @@
         <strong>请用科沃斯 Global App</strong> 内的扫包/调试入口扫描上图二维码。
         微信或系统相机扫描可能无法下载，这是正常现象。
       </p>
+      <ul class="changelog">
+        <li>修复 EcoJsBridge 未就绪即进遥控页导致的报错</li>
+        <li>跳过蓝牙时不再显示「连接中」</li>
+        <li>加载页可开关「跳过蓝牙等待」</li>
+      </ul>
     </section>
 
     <section class="card links">
-      <a href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779789671.zip">
+      <a href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779791348.zip">
         打开短链（App 内使用）
       </a>
       <a
         class="secondary"
-        href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779789671.zip"
+        href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779791348.zip"
       >
         浏览器下载 ZIP（需公司网/VPN）
       </a>
     </section>
 
     <p class="note">
-      二维码内编码的是 d.9527.com 短链，不是图片地址。短链参数 name=w3 对应 package.json 包名。
+      若仍看到旧版报错，请在 App 内删除旧 w3 包后重新扫码。二维码编码的是 d.9527.com 短链（name=w3）。
     </p>
   </div>
 </body>
