@@ -22,7 +22,7 @@
 
 `ref-grid` vs `impl-grid` 像素粗估 ~71%（PNG 高度/文案差）；**列轨已对齐**。
 
-**商品区显窄原因（已修）**：编组 export 为 440px@2x（含 drop-shadow），缩进 180px 格后白卡视觉变窄、中缝显大。处理：`product-cell` + `product-cell--shadow` 按 `220/180` 放大裁切；hero 改导 `1464:445`（360px@2x 贴边）。
+**商品区（已改）**：不再使用整卡 PNG；改为 **白底圆角壳 + 商品图 slice + code 文案**（与 Hot 一致）。列轨仍为 180 + 缝 14 + 沟 20。
 
 生成命令：
 

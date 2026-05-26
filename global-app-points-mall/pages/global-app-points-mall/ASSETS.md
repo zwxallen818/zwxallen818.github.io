@@ -1,10 +1,24 @@
 # ASSETS · global-app-points-mall
 
+## 积分兑换区（白底圆角卡 + code）
+
 | 文件 | nodeId | 说明 |
 |------|--------|------|
-| hot-product-n8.png | 1464:646 | Hot 商品图（N8+，左列复用） |
-| hot-product-n9.png | 1464:669 | Hot 商品图（N9，右列复用） |
+| product-hero-photo.png | 1464:731 | 首卡大图 |
+| product-photo-brush.png | 1464:476 | 商品图 |
+| product-photo-wash.png | 1464:512 | 商品图 |
+| product-photo-pouch.png | 1464:544 | 商品图 |
+| product-photo-filter.png | 1464:585 | 商品图 |
+| product-photo-kit.png | 1464:616 | 商品图 |
+| icon-points-coin.png | 1464:480 | 积分币（height=20） |
 
-Hot 卡片壳、标题、Save 副文案、AUD/价格、按钮均为 **code**（左列文案在帧级节点 `1464:691` 等，整卡 export 会漏字）。
+标题 / 价格 / 标签 / 按钮均为 **code**；卡壳 CSS 白底 `10px` 圆角 + 阴影（同 Hot）。
 
-**禁止** Hot 区复用 `product-card-mid.png` 或其它商品区 PNG。
+## Hot Recommendation
+
+| 文件 | nodeId |
+|------|--------|
+| hot-product-n8.png | 1464:646 |
+| hot-product-n9.png | 1464:669 |
+
+**禁止** 商品区使用 `product-card-*.png` 整卡贴图。

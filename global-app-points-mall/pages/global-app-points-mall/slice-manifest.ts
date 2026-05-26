@@ -1,4 +1,4 @@
-/** 1464:396 · 每张卡独立 nodeId 导出，禁止复用其它区块 PNG */
+/** 1464:396 · 商品区白底卡 + 图 slice；禁止整卡 PNG 贴图 */
 export const SLICE_MANIFEST = {
   fileKey: "Q1tcc8nYpjqViTXz6kx1ED",
   rootNodeId: "1464:396",
@@ -12,9 +12,13 @@ export const SLICE_MANIFEST = {
     { file: "icon-chevron-light.png", nodeId: "1464:467", scale: 3, displayHeight1x: 10 },
     { file: "icon-chevron-dark.png", nodeId: "1464:453", scale: 3, displayHeight1x: 10 },
     { file: "icon-checkbox.png", nodeId: "1465:598", scale: 3, displayHeight1x: 30 },
-    { file: "product-card-hero.png", nodeId: "1464:445", scale: 2, displayHeight1x: 290 },
-    { file: "product-card-tall.png", nodeId: "1464:469", scale: 2 },
-    { file: "product-card-mid.png", nodeId: "1464:500", scale: 2 },
+    { file: "product-hero-photo.png", nodeId: "1464:731", scale: 2 },
+    { file: "product-photo-brush.png", nodeId: "1464:476", scale: 2 },
+    { file: "product-photo-wash.png", nodeId: "1464:512", scale: 2 },
+    { file: "product-photo-pouch.png", nodeId: "1464:544", scale: 2 },
+    { file: "product-photo-filter.png", nodeId: "1464:585", scale: 2 },
+    { file: "product-photo-kit.png", nodeId: "1464:616", scale: 2 },
+    { file: "icon-points-coin.png", nodeId: "1464:480", scale: 2, displayHeight1x: 20 },
     { file: "hot-product-n8.png", nodeId: "1464:646", scale: 2, displayHeight1x: 180 },
     { file: "hot-product-n9.png", nodeId: "1464:669", scale: 2, displayHeight1x: 180 },
   ],

@@ -7,10 +7,11 @@
 
 | 类型 | 处理 |
 |------|------|
-| Oval / Banner / 复杂商品卡 | INSTANCE/FRAME export PNG |
+| Oval / Banner | INSTANCE/FRAME export PNG |
+| 积分兑换卡 | 白底壳 code + 商品图/积分币 slice |
 | 返回、积分币、VIP 徽章、筛选箭头、勾选 | INSTANCE 根，height= bbox |
 | 通知文案、筛选字、价格字 | **code** |
-| 商品卡内俄文/英文标题 | 整卡 PNG 保留（避免漏字） |
+| 商品卡文案/按钮/标签 | **code**（同 Hot 结构） |
 
 ## Hot Recommendation（帧底部）
 
