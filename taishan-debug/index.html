@@ -22,20 +22,9 @@
       line-height: 1.55;
       padding: 24px 16px 48px;
     }
-    .wrap {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .meta {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
+    .wrap { max-width: 480px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -50,17 +39,9 @@
       height: auto;
       margin: 0 auto;
     }
-    .hint {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 12px;
-    }
+    .hint { font-size: 13px; color: var(--muted); margin-top: 12px; }
     .hint strong { color: var(--text); }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .links { display: flex; flex-direction: column; gap: 10px; }
     .links a {
       display: block;
       padding: 12px 14px;
@@ -78,11 +59,7 @@
       color: var(--accent);
       border: 1px solid var(--accent);
     }
-    .note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 16px;
-    }
+    .note { font-size: 12px; color: var(--muted); margin-top: 16px; }
     .back {
       display: inline-block;
       margin-bottom: 16px;
@@ -97,48 +74,29 @@
       color: var(--muted);
     }
     ul.changelog li { margin-bottom: 4px; }
+    code { font-size: 12px; background: #eef2f6; padding: 2px 6px; border-radius: 4px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="../previews/">← 预览索引</a>
     <h1>泰山 H5 · develop 调试包</h1>
-    <p class="meta">版本 <strong>260526.182908.287736</strong> · 默认跳过蓝牙 · Bridge 防崩溃</p>
+    <p class="meta">版本 <strong>260526.184021.287737</strong></p>
 
     <section class="card">
-      <img
-        class="qr-img"
-        src="./qr-debug.png"
-        width="360"
-        height="360"
-        alt="Global App 扫包二维码"
-      />
-      <p class="hint">
-        <strong>请用科沃斯 Global App</strong> 内的扫包/调试入口扫描上图二维码。
-        微信或系统相机扫描可能无法下载，这是正常现象。
-      </p>
+      <img class="qr-img" src="./qr-debug.png" width="360" height="360" alt="Global App 扫包二维码" />
+      <p class="hint"><strong>请用科沃斯 Global App</strong> 内扫包入口扫码。装包前建议删除旧 w3 包。</p>
       <ul class="changelog">
-        <li>修复 EcoJsBridge 未就绪即进遥控页导致的报错</li>
-        <li>跳过蓝牙时不再显示「连接中」</li>
-        <li>加载页可开关「跳过蓝牙等待」</li>
+        <li>修复跳过蓝牙开关在 App.vue 未生效 → 不再弹「蓝牙连接中」</li>
+        <li>修复 <code>_handleMessageFromNative</code> 报错</li>
+        <li>按钮发包可在 Eruda 看 <code>[SkipGate][BT_SEND]</code> 或 <code>__TAISHAN_BT_LOG__</code></li>
       </ul>
     </section>
 
     <section class="card links">
-      <a href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779791348.zip">
-        打开短链（App 内使用）
-      </a>
-      <a
-        class="secondary"
-        href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779791348.zip"
-      >
-        浏览器下载 ZIP（需公司网/VPN）
-      </a>
+      <a href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779792021.zip">打开短链（App 内）</a>
+      <a class="secondary" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779792021.zip">浏览器下载 ZIP</a>
     </section>
-
-    <p class="note">
-      若仍看到旧版报错，请在 App 内删除旧 w3 包后重新扫码。二维码编码的是 d.9527.com 短链（name=w3）。
-    </p>
   </div>
 </body>
 </html>
