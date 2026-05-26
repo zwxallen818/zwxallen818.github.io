@@ -1,7 +1,7 @@
 # AUDIT · 1464:396
 
 - **frame**: 积分中心首页 · 414×2489
-- **skip**: 1464:409 Status Bar
+- **skip**: 1464:409 Status Bar（h=49，布局用 `--status-bar-h` 扣除，勿保留 padding 占位）
 
 ## 切图策略
 

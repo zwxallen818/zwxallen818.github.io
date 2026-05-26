@@ -29,6 +29,8 @@
         --tag-gold: linear-gradient(180deg, #f3d854 0%, #ffb800 100%);
         --btn-disabled-bg: #d1d4d6;
         --oval-h: 273px;
+        /* 1464:409 Status 不实现，布局扣除其高度 */
+        --status-bar-h: 49px;
         --fw-semibold: 600;
         --fw-medium: 500;
         --fw-regular: 400;
@@ -71,7 +73,7 @@
       .hero-zone {
         position: relative;
         padding: 0 var(--mx);
-        margin-top: -200px;
+        margin-top: calc(-200px - var(--status-bar-h));
         z-index: 1;
       }
 
@@ -79,7 +81,7 @@
         display: flex;
         align-items: center;
         min-height: 44px;
-        padding-top: 24px;
+        padding-top: env(safe-area-inset-top, 0);
       }
 
       .nav-row__back {
