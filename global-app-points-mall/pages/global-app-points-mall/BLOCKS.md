@@ -12,7 +12,7 @@
 | 6 | 主内容白区 | 1465:646 | full-bleed | 圆角顶；内沟 20px |
 | 7 | Banner | 1464:454 | gutter | 图 width 100% |
 | 8 | 筛选条 | 1464:464+684+690 | gutter | code 按钮+勾选 |
-| 9 | 商品 grid | 1465:609 | gutter | grid 2 列 → auto-fill |
-| 10 | Hot 区 | 1464:685+686 | gutter | 标题 code；四卡各 nodeId 整卡 PNG |
+| 9 | 商品 grid | 1465:609 | gutter | `.card-grid`：180+14+180，沟 20px |
+| 10 | Hot 区 | 1464:685+686 | gutter | 与 #9 **同一** `.card-grid` 列宽/列距 |
 
 y 裁切见 `blocks-crops.json`。
