@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Figma 静态页预览 · Allen</title>
+  <meta name="description" content="Global APP 与麒麟 UX 近期落地的 Figma 静态预览页索引" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #fff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #3877f5;
+      --accent-soft: #eef4ff;
+      --green: #059669;
+      --green-soft: #ecfdf5;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      width: min(100% - 32px, var(--max));
+      margin-inline: auto;
+      padding: 24px 0 64px;
+    }
+    .top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .top h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .top p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.9375rem;
+      max-width: 42rem;
+    }
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn:hover { background: #f3f4f6; }
+    .btn--primary {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .btn--primary:hover { opacity: 0.9; background: var(--text); }
+    .section { margin-bottom: 40px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-head h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .section-head span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .card:hover {
+      border-color: #d1d5db;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tag--green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+    .card h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .card__meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .card__meta code {
+      font-size: 12px;
+      background: #f3f4f6;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .card__desc {
+      font-size: 14px;
+      color: #374151;
+      flex: 1;
+    }
+    .card__actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .card__actions .btn--open {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .card__actions .btn--open:hover {
+      opacity: 0.92;
+      background: var(--accent);
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    @media (max-width: 480px) {
+      .top h1 { font-size: 1.375rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <h1>Figma 静态页预览</h1>
+        <p>
+          近期按 <strong>messy-figma-responsive</strong> 技能从设计稿落地的 HTML 预览。
+          建议在手机宽度（390 / 414）下打开；宽屏页面会自适应，勿锁死 414px。
+        </p>
+      </div>
+      <div class="top-actions">
+        <a class="btn" href="../">← Allen Skills</a>
+        <a class="btn btn--primary" href="https://github.com/zwxallen818/zwxallen818.github.io" target="_blank" rel="noopener">GitHub 仓库</a>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="sec-global">
+      <div class="section-head">
+        <h2 id="sec-global">Global APP</h2>
+        <span>fileKey Q1tcc8nYpjqViTXz6kx1ED · 画布宽 414</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card__tags"><span class="tag">积分</span><span class="tag">长页</span></div>
+          <h3>积分中心首页</h3>
+          <p class="card__meta">节点 <code>1464:396</code> · 414×2489 · 2026-05-26</p>
+          <p class="card__desc">Points Mall：Oval 顶区、积分兑换双列、Hot Recommendation、筛选 Sort。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../global-app-points-mall/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED?node-id=1464-396" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__tags"><span class="tag">Tips</span><span class="tag">吸顶</span></div>
+          <h3>Tips 首页</h3>
+          <p class="card__meta">节点 <code>11974:7723</code> · 414×1312 · 2026-05-26</p>
+          <p class="card__desc">分类横向滚动、促销条、内容 Feed 双列、底栏四 Tab（发现选中）。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../global-app-tips-home/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED?node-id=11974-7723" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__tags"><span class="tag">商品</span><span class="tag">长页</span></div>
+          <h3>商品详情页</h3>
+          <p class="card__meta">节点 <code>8031:1892</code> · 414×3776 · 2026-05-26</p>
+          <p class="card__desc">DEEBOT OZMO N8 PRO+：图集、规格、底栏双 CTA（代码布局，非整栏 PNG）。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../global-app-product-detail/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED?node-id=8031-1892" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__tags"><span class="tag">组件</span><span class="tag">顶区</span></div>
+          <h3>顶区 Oval 装饰</h3>
+          <p class="card__meta">节点 <code>1464:398</code> · 414×273 · 2026-05-26</p>
+          <p class="card__desc">积分/Tips 等页共用的渐变 Oval 顶图 demo（含简易导航条占位）。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../global-app-header-oval/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/Q1tcc8nYpjqViTXz6kx1ED?node-id=1464-398" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sec-mowing">
+      <div class="section-head">
+        <h2 id="sec-mowing">麒麟 UX · 割草</h2>
+        <span>fileKey ecFFt9pbBs5pnqnHwOWqA4 · 画布宽 390</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card__tags"><span class="tag tag--green">浮层</span></div>
+          <h3>割草序列</h3>
+          <p class="card__meta">节点 <code>3792:35591</code> · 390×844 · 2026-05-25</p>
+          <p class="card__desc">Mowing Sequence 时间轴浮层：Skip、OK、区域列表与进度节点。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../mowing-sequence/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/ecFFt9pbBs5pnqnHwOWqA4/%E9%BA%92%E9%BA%9FUX?node-id=3792-35591" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__tags"><span class="tag tag--green">设置</span></div>
+          <h3>割草设置 · Area4</h3>
+          <p class="card__meta">节点 <code>3792:35872</code> · 390×844 · 2026-05-25</p>
+          <p class="card__desc">Area4 割草参数设置浮层（方向、速度、避障等控件区）。</p>
+          <div class="card__actions">
+            <a class="btn btn--open" href="../mowing-settings/">打开预览</a>
+            <a class="btn" href="https://www.figma.com/design/ecFFt9pbBs5pnqnHwOWqA4/%E9%BA%92%E9%BA%9FUX?node-id=3792-35872" target="_blank" rel="noopener">Figma</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>共 6 个预览页 · 更新于仓库 <code>main</code> 分支部署后约 1 分钟生效。</p>
+      <p style="margin-top: 8px;">本页路径：<code>/previews/</code></p>
+    </footer>
+  </div>
+</body>
+</html>
