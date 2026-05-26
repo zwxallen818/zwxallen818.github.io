@@ -29,11 +29,23 @@
       <a class="s" href="https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526231707">二维码直链</a>
     </div>
     <div class="card">
+      <p class="meta">预研遥控页（风机 + 滚刷 + 四向）</p>
+      <a href="./remote-stick-ui-v3.png?v=20260527" style="display:block;margin-top:8px">
+        <img
+          src="./remote-stick-ui-v3.png?v=20260527"
+          alt="遥控页截图"
+          style="width:100%;border-radius:8px;border:1px solid #e5e7eb"
+        />
+      </a>
+      <a class="s" href="./remote-stick-ui-v3.png?v=20260527" style="margin-top:12px">遥控页截图直链</a>
+    </div>
+    <div class="card">
       <p class="meta">本版要点</p>
       <ul>
         <li>跳过蓝牙：仅进页面，不伪造已连接；遥控会 Toast 提示</li>
         <li>跳过时不触发 WithResponse 15s 超时</li>
         <li>连接页可随时跳过；init 失败自动重试</li>
+        <li>遥控页恢复滚刷；onProperties 对 hardware 深度合并</li>
       </ul>
     </div>
   </div>
