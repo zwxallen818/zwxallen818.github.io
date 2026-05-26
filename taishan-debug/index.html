@@ -4,111 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>泰山 H5 调试包 · w3 develop</title>
-  <meta name="description" content="泰山 prototype-research develop 包扫码安装" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   <style>
-    :root {
-      --bg: #f3f6f8;
-      --text: #253746;
-      --muted: #849cbc;
-      --accent: #3877f5;
-      --card: #fff;
-      --border: #e5e7eb;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-      padding: 24px 16px 48px;
-    }
+    body { font-family: "PingFang SC", sans-serif; background: #f3f6f8; color: #253746; padding: 24px 16px; margin: 0; }
     .wrap { max-width: 480px; margin: 0 auto; }
-    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
-    .meta { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-    .qr-img {
-      display: block;
-      width: 100%;
-      max-width: 360px;
-      height: auto;
-      margin: 0 auto;
-    }
-    .hint { font-size: 13px; color: var(--muted); margin-top: 12px; }
-    .hint strong { color: var(--text); }
-    .links { display: flex; flex-direction: column; gap: 10px; }
-    .links a {
-      display: block;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: center;
-      text-decoration: none;
-      word-break: break-all;
-    }
-    .links a.secondary {
-      background: #fff;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-    .note { font-size: 12px; color: var(--muted); margin-top: 16px; }
-    .back {
-      display: inline-block;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    ul.changelog {
-      margin-top: 8px;
-      padding-left: 18px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    ul.changelog li { margin-bottom: 4px; }
-    code { font-size: 12px; background: #eef2f6; padding: 2px 6px; border-radius: 4px; }
+    h1 { font-size: 1.25rem; }
+    .meta { color: #849cbc; font-size: 14px; margin-bottom: 16px; }
+    .card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid #e5e7eb; }
+    .qr-img { width: 100%; max-width: 360px; display: block; margin: 0 auto; }
+    a.btn { display: block; padding: 12px; background: #3877f5; color: #fff; text-align: center; border-radius: 8px; text-decoration: none; margin-top: 8px; word-break: break-all; }
+    a.secondary { background: #fff; color: #3877f5; border: 1px solid #3877f5; }
+    ul { font-size: 13px; color: #849cbc; padding-left: 18px; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="../previews/">← 预览索引</a>
-    <h1>泰山 H5 · develop 调试包</h1>
-    <p class="meta">版本 <strong>260526.184142.287738</strong> · 打包时间 2026-05-26 18:41</p>
-    <p class="meta" id="deploy-check">若仍显示旧版本，请强制刷新（Ctrl+F5）</p>
-
+    <h1>泰山 H5 · develop</h1>
+    <p class="meta">版本 <strong>260526.200015.287739</strong></p>
     <section class="card">
-      <img
-        class="qr-img"
-        src="./qr-debug.png?v=260526184142"
-        width="360"
-        height="360"
-        alt="Global App 扫包二维码"
-      />
-      <p class="hint"><strong>请用科沃斯 Global App</strong> 内扫包入口扫码。装包前建议删除旧 w3 包。</p>
-      <ul class="changelog">
-        <li>跳过蓝牙：不弹「蓝牙连接中」</li>
-        <li>修复 Bridge <code>_handleMessageFromNative</code></li>
-        <li>Eruda 查看 <code>[SkipGate][BT_SEND]</code> / <code>__TAISHAN_BT_LOG__</code></li>
+      <img class="qr-img" src="./qr-debug.png?v=260526200015" alt="扫包二维码" />
+      <ul>
+        <li>无蓝牙 Mock 悬浮图标</li>
+        <li>启动不再长时间白屏</li>
+        <li>遥控页可 Mock 风机/滚刷上报格式</li>
       </ul>
     </section>
-
-    <section class="card links">
-      <a href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779792102.zip">打开短链（App 内）</a>
-      <a class="secondary" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w31779792102.zip">浏览器下载 ZIP</a>
+    <section class="card">
+      <a class="btn" href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw31779796815.zip">短链（App 内）</a>
+      <a class="btn secondary" href="https://raw.githubusercontent.com/zwxallen818/zwxallen818.github.io/main/taishan-debug/qr-debug.png?v=260526200015">二维码直链（推荐）</a>
     </section>
-
-    <p class="note">二维码编码 d.9527.com 短链（name=w3）。若界面未更新，请强刷本页或删 App 内旧包后重扫。</p>
+    <p class="meta">Pages 若未更新，请用上方「二维码直链」或 README。</p>
   </div>
 </body>
 </html>
