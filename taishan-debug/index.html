@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>泰山 develop 260527.074442.287727</title>
+  <title>泰山 develop 260527.082941.287728</title>
   <meta http-equiv="Cache-Control" content="no-cache" />
   <style>
     body { font-family: "PingFang SC", sans-serif; background: #f3f6f8; padding: 24px 16px; margin: 0; color: #253746; }
@@ -22,27 +22,26 @@
 <body>
   <div class="wrap">
     <h1>泰山 H5 develop</h1>
-    <p class="meta">版本 <strong>260527.074442.287727</strong>（5 月 27 日）</p>
-    <p class="tip">图片与安装页已走<strong>阿里云 OSS 国内节点</strong>，无需代理即可查看。若 GitHub Pages 打不开，请用下方「国内安装页」。</p>
+    <p class="meta">版本 <strong>260527.082941.287728</strong>（5 月 27 日）</p>
+    <p class="tip">安装包与图片均走<strong>阿里云 OSS 国内节点</strong>，无需代理。</p>
     <div class="card">
       <img
         class="qr"
-        src="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/qr-debug.png?v=260527074442287727"
+        src="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/qr-debug.png?v=260527082941287728"
         alt="安装二维码"
       />
     </div>
     <div class="card">
-      <a class="p" href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw3_260527.074442.287727_Debug.zip">短链安装</a>
-      <a class="s" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/index.html">国内安装页（OSS）</a>
-      <a class="s" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/qr-debug.png?v=260527074442287727">二维码图片（国内）</a>
-      <a class="s" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w3_260527.074442.287727_Debug.zip">ZIP 直链</a>
+      <a class="p" href="http://d.9527.com/?name=w3&amp;durl=https%3A%2F%2Ftest-app-package.oss-cn-hangzhou.aliyuncs.com%2Fw3_260527.082941.287728_Debug.zip">短链安装</a>
+      <a class="s" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w3_260527.082941.287728_Debug.zip">ZIP 直链（OSS）</a>
+      <a class="s" href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/w3_260527.082941.287728_Debug.png">二维码原图（OSS）</a>
     </div>
     <div class="card">
       <p class="meta">预研遥控页截图</p>
-      <a href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/remote-stick-ui-v3.png?v=20260527072255">
+      <a href="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/remote-stick-ui-v3.png">
         <img
           class="shot"
-          src="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/remote-stick-ui-v3.png?v=20260527072255"
+          src="https://test-app-package.oss-cn-hangzhou.aliyuncs.com/taishan-debug/remote-stick-ui-v3.png"
           alt="遥控页"
         />
       </a>
@@ -50,8 +49,9 @@
     <div class="card">
       <p class="meta">本版要点</p>
       <ul>
-        <li>预研遥控页恢复滚刷；onProperties 对 hardware 深度合并</li>
-        <li>修复打包脚本：ZIP/二维码与当天 copy-files 版本一致</li>
+        <li>遥控页移动端布局放大（风机/滚刷/方向盘）</li>
+        <li>getOnceData 等待原生桥，减少进页报错</li>
+        <li>滚刷恢复；onProperties hardware 深度合并</li>
       </ul>
     </div>
   </div>
